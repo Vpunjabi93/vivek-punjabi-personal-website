@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  /* Surface Scale - Sovereign Intelligence Core */
+  --surface: #131313;
+  --surface-container-lowest: #0e0e0e;
+  --surface-container-low: #1c1b1b;
+  --surface-container: #201f1f;
+  --surface-container-high: #2a2a2a;
+  --surface-container-highest: #353534;
+  
+  /* Brand Colors */
+  --primary: #ffb4ac;
+  --primary-container: #b22222; /* Blood Red */
+  --secondary: #c7c6c6; /* Metallic Silver */
+  --tertiary: #94d3c1;
+  --tertiary-container: #266658; /* Strategy Green */
+  
+  /* Text */
+  --on-surface: #e5e2e1;
+  --on-surface-variant: #e2beba;
+  --on-primary: #690007;
+  --on-tertiary: #00382e;
+  
+  /* Mode-Specific (Default: Sales) */
+  --mode-accent: var(--primary-container);
+  --mode-accent-rgb: 178, 34, 34;
+  --mode-on-accent: var(--secondary);
+  
+  /* Glass Effects */
+  --glass-fill: rgba(53, 53, 52, 0.9);
+  --glass-blur: 12px;
+  --glass-border: rgba(199, 198, 198, 0.15);
+  
+  /* Typography */
+  --font-display: 'Epilogue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', sans-serif;
+  
+  /* Spacing */
+  --space-unit: 8px;
+  --space-xl: 32px;
+  
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dual Mode States */
+[data-mode="marketing"] {
+  --mode-accent: var(--tertiary-container);
+  --mode-accent-rgb: 38, 102, 88;
+  --mode-on-accent: var(--on-surface);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Typography Scale */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--on-surface);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.display-lg {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+/* Primitive Components */
+.glass-card {
+  background: var(--glass-fill);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  padding: var(--space-xl);
+  border-radius: 4px; /* Round Four as per Stitch */
+}
+
+/* The "No-Line" Rule */
+.section-split {
+  background-color: var(--surface-container-low);
+}
+
+/* AI Console Styling */
+.ai-console {
+  background-color: var(--surface-container-lowest);
+  font-family: var(--font-mono);
+  padding: 1.5rem;
+  border-radius: 4px;
+  color: var(--tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-console::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(148, 211, 193, 0.05) 50%, rgba(0, 0, 0, 0) 50.5%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Interactive Elements */
+.btn-primary {
+  background-color: var(--mode-accent);
+  color: var(--mode-on-accent);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(var(--mode-accent-rgb), 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
