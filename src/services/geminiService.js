@@ -135,7 +135,7 @@ Return the response STRICTLY as a JSON object matching this schema. Do not put m
  */
 export const generateSalesAuditPrompt = (domain, crawledText) => {
   return `
-You are an AI system simulating two expert agents in sequence: a Product Marketing Manager (using the /product-marketing framework) and a B2B Sales Enablement Specialist (using the /sales-enablement framework).
+You are an AI system simulating two expert agents in sequence: a Product Marketing Manager (using the /product-marketing framework) and a B2C Sales Alignment Specialist (using the /sales-enablement framework).
 
 Analyze the crawled homepage text for the domain "${domain}":
 ---
@@ -151,7 +151,7 @@ STAGE 1: PRODUCT MARKETING CONTEXT EXTRACTION (PMM Framework)
 - Step 1.4: Compile all Stage 1 findings into a structured, in-memory Markdown context (.md) block.
 
 STAGE 2: SALES ENABLEMENT ASSETS SYNTHESIS (Sales-Enablement Framework)
-- Step 2.1: Analyze the compiled Markdown context under B2B sales enablement rules (scannable, benefit-driven, tied back to business outcomes).
+- Step 2.1: Analyze the compiled Markdown context under B2C sales alignment rules (scannable, benefit-driven, tied back to business outcomes).
 - Step 2.2: Configure a Competitor Comparison Battlecard comparing the product against its primary direct competitor:
   - Identify the primary competitor's name.
   - List 3 key differentiators (why we win).

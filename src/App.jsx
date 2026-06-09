@@ -3,6 +3,7 @@ import Background from './components/Background';
 import Hero from './components/Hero';
 import AIConsole from './components/AIConsole';
 import CaseStudyGrid from './components/CaseStudyGrid';
+import PortfolioGallery from './components/PortfolioGallery';
 import { useDualMode } from './context/DualModeContext';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         
         <nav style={{ display: 'flex', gap: '2.5rem' }}>
           <a href="#console-demo" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Console</a>
+          <a href="#portfolio-gallery" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Story & Builds</a>
           <a href="#pillars" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Pillars</a>
           <a href="#contact" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Connect</a>
         </nav>
@@ -50,7 +52,10 @@ function App() {
         {/* Section 2: GTM Console Demo */}
         <AIConsole />
         
-        {/* Section 3: GTM Pillars & Case Studies */}
+        {/* Section 3: Origin Story & Selected Builds */}
+        <PortfolioGallery />
+        
+        {/* Section 4: GTM Pillars & Case Studies */}
         <div id="pillars" className="section-base">
           <CaseStudyGrid />
         </div>
@@ -77,8 +82,18 @@ function App() {
 
       {/* Footer */}
       <footer style={{ padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(199, 198, 198, 0.05)', opacity: 0.4 }}>
-        <div className="label" style={{ fontSize: '0.7rem' }}>
-          © 2026 Vivek Punjabi — Powered by Editorial Noir & Sovereign Intelligence
+        <div className="label" style={{ fontSize: '0.7rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+          <span>© 2026 Vivek Punjabi — PMM with a Builder Mindset</span>
+          <a 
+            href="https://github.com/Vpunjabi93" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ color: 'var(--mode-accent)', textDecoration: 'none', transition: 'color 0.3s' }}
+            onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+            onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+          >
+            GitHub Profile
+          </a>
         </div>
       </footer>
     </div>

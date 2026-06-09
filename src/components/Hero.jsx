@@ -47,7 +47,7 @@ const Hero = () => {
             transition: 'color 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          {mode === 'sales' ? 'B2B Sales Enablement / LLM Pipelines / Objection Code' : 'Product Positioning / Conversion Copywriting / Interactive Demos'}
+          {mode === 'sales' ? 'B2C Sales Alignment / Persona Mapping / AI Analysis' : 'Product Positioning / Conversion Copywriting / Interactive Demos'}
         </div>
         
         {/* Massive Serif Headline */}
@@ -78,7 +78,7 @@ const Hero = () => {
             lineHeight: 1.7
           }}
         >
-          I help B2B SaaS companies accelerate GTM loops and increase funnel conversion by building high-converting narratives, interactive visual product tours, and custom AI workflows.
+          I am a Product Marketing Manager (PMM) who speaks developer—not fluently, but I get things done. I write conversion-focused narratives, build interactive product tours, and experiment with AI to map product-market fit.
         </p>
         
         {/* Interactive Dual-Mode Trigger */}

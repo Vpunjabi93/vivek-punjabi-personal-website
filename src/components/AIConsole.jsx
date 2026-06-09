@@ -70,16 +70,16 @@ const AIConsole = () => {
 
       if (mode === 'sales') {
         await addLog('audit', `Initializing Product Marketing GTM extraction for ${cleanName}...`, 800);
-        await addLog('audit', `Mapping target customer profiles and B2B operational pain points...`, 1000);
+        await addLog('audit', `Mapping target customer profiles and B2C behavioral pain points...`, 1000);
         await addLog('audit', `Analyzing competitor landscape and key battleground features...`, 1000);
         await addLog('system', `Compiling extracted details into structured background Markdown context (.md)...`, 800);
         
         // Trigger the background service call with the crawled text
         const result = await runGTMAuditPipeline(urlInput, crawledText, mode);
 
-        await addLog('brief', `Applying B2B sales enablement frameworks (Benefit-driven, outcome-focused)...`, 1000);
+        await addLog('brief', `Applying B2C sales alignment frameworks (Benefit-driven, outcome-focused)...`, 1000);
         await addLog('brief', `Synthesizing customized Competitor Comparison Battlecard & Pitch One-Pager...`, 1200);
-        await addLog('output', `B2B sales enablement collateral and pitch assets generation complete.`, 800);
+        await addLog('output', `B2C sales alignment collateral and pitch assets generation complete.`, 800);
 
         setPipelineOutput(result);
       } else {
@@ -155,7 +155,7 @@ ${pipelineOutput.comparisonCard.battlegroundFeatures.map(f => `| ${f.feature} | 
 * **Objection:** "${pipelineOutput.comparisonCard.objectionHandling.objection}"
 * **Response:** "${pipelineOutput.comparisonCard.objectionHandling.response}"
 
-## 6. Pitch One-Pager (B2B Leave-Behind)
+## 6. Pitch One-Pager (B2C Landing-Page Hook)
 
 ### Problem Statement:
 ${pipelineOutput.onePager.problemStatement}
@@ -497,11 +497,11 @@ ${pipelineOutput.creativeAssets.map((asset, index) => `### Asset ${index + 1}: $
                       </div>
                     )}
 
-                    {/* 6. Creative Assets Copy / B2B One-Pager Leave-Behind */}
+                    {/* 6. Creative Assets Copy / B2C One-Pager Landing-Page Hook */}
                     {mode === 'sales' ? (
                       <div>
                         <div className="label" style={{ fontSize: '0.75rem', marginBottom: '1rem', opacity: 0.6 }}>
-                          6. B2B Pitch One-Pager (Leave-Behind)
+                          6. B2C Pitch One-Pager (Conversion Focus)
                         </div>
                         <div style={{
                           background: 'rgba(255,255,255,0.01)',
