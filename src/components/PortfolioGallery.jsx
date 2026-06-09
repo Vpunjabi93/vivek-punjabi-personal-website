@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Cpu, Globe, ArrowUpRight } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 const PortfolioGallery = () => {
   const projects = [
@@ -45,15 +46,22 @@ const PortfolioGallery = () => {
           <div className="glass-card" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', paddingBottom: '1.5rem' }}>
               <img 
-                src="/src/assets/profile.jpg" 
+                src={profileImg} 
                 alt="Vivek Punjabi" 
                 style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  borderRadius: '50%', 
+                  width: '90px', 
+                  height: '90px', 
+                  borderRadius: '16px', 
                   objectFit: 'cover', 
-                  border: '2px solid rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.4)'
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
+                  transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
                 }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none'; // Hide if image fails to load
