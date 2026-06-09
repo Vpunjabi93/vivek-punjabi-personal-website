@@ -27,7 +27,7 @@ const PortfolioGallery = () => {
   ];
 
   return (
-    <section id="portfolio-gallery" className="section-split" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <section id="portfolio-gallery" className="section-split scroll-reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ maxWidth: '1200px', width: '100%' }}>
         
         <div className="label" style={{ marginBottom: '3rem', textAlign: 'center' }}>
@@ -43,14 +43,31 @@ const PortfolioGallery = () => {
           
           {/* Left Column: Origin Story */}
           <div className="glass-card" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <div className="label" style={{ color: 'var(--mode-accent)', fontSize: '0.7rem' }}>
-                // THE ORIGIN
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', paddingBottom: '1.5rem' }}>
+              <img 
+                src="/src/assets/profile.jpg" 
+                alt="Vivek Punjabi" 
+                style={{ 
+                  width: '80px', 
+                  height: '80px', 
+                  borderRadius: '50%', 
+                  objectFit: 'cover', 
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.4)'
+                }}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'; // Hide if image fails to load
+                }}
+              />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                <div className="label" style={{ color: 'var(--mode-accent)', fontSize: '0.7rem' }}>
+                  // THE ORIGIN
+                </div>
+                <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, lineHeight: 1.2 }}>
+                  From Cold Calls <br />
+                  to <span style={{ fontStyle: 'italic', color: 'var(--mode-accent)' }}>GTMs</span>
+                </h3>
               </div>
-              <h3 style={{ fontSize: '1.75rem', fontFamily: 'var(--font-display)', fontWeight: 600, lineHeight: 1.25 }}>
-                From Cold Calls <br />
-                to <span style={{ fontStyle: 'italic', color: 'var(--mode-accent)' }}>GTMs</span>
-              </h3>
             </div>
             
             <p style={{ color: 'var(--on-surface-variant)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>

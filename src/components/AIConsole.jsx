@@ -219,7 +219,7 @@ ${pipelineOutput.creativeAssets.map((asset, index) => `### Asset ${index + 1}: $
   };
 
   return (
-    <section id="console-demo" className="section-split" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <section id="console-demo" className="section-split scroll-reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ maxWidth: '1000px', width: '100%' }}>
         <div className="label" style={{ marginBottom: '1rem', textAlign: 'center' }}>
           Interactive Proof

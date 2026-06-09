@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Background from './components/Background';
 import Hero from './components/Hero';
 import AIConsole from './components/AIConsole';
@@ -8,6 +8,36 @@ import { useDualMode } from './context/DualModeContext';
 
 function App() {
   const { mode } = useDualMode();
+
+  // Scroll reveal Intersection Observer setup
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Fade-in once
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    // Cleanup observer
+    return () => {
+      revealElements.forEach((el) => {
+        try {
+          observer.unobserve(el);
+        } catch (e) {}
+      });
+    };
+  }, []);
 
   return (
     <div style={{ position: 'relative', width: '100%' }}>
@@ -56,12 +86,12 @@ function App() {
         <PortfolioGallery />
         
         {/* Section 4: GTM Pillars & Case Studies */}
-        <div id="pillars" className="section-base">
+        <div id="pillars" className="section-base scroll-reveal">
           <CaseStudyGrid />
         </div>
 
-        {/* Section 4: Contact Footer */}
-        <section id="contact" className="section-split" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {/* Section 5: Contact Footer */}
+        <section id="contact" className="section-split scroll-reveal" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div className="label" style={{ color: 'var(--mode-accent)', marginBottom: '1.5rem', transition: 'color 0.6s' }}>Deployment</div>
           <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '2rem', fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>
             Deploy <span style={{ color: 'var(--mode-accent)', transition: 'color 0.6s' }}>GTM Automation</span>.
