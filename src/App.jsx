@@ -9,7 +9,8 @@ function App() {
   const { mode } = useDualMode();
 
   return (
-    <div className="app-container">
+    <div style={{ position: 'relative', width: '100%' }}>
+      {/* Dynamic Background */}
       <Background />
       
       {/* Floating Header */}
@@ -17,71 +18,68 @@ function App() {
         style={{ 
           position: 'fixed', 
           top: 0, 
-          width: '100%', 
-          padding: '1.5rem 2rem', 
+          left: 0,
+          right: 0,
+          padding: '1.25rem 3rem', 
           zIndex: 100,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backdropFilter: 'blur(8px)',
-          background: 'rgba(19, 19, 19, 0.5)',
-          borderBottom: '1px solid var(--glass-border)'
+          backdropFilter: 'blur(15px)',
+          WebkitBackdropFilter: 'blur(15px)',
+          background: 'rgba(19, 19, 19, 0.4)',
+          borderBottom: '1px solid rgba(199, 198, 198, 0.08)'
         }}
       >
-        <div style={{ fontWeight: 900, fontSize: '1.25rem', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
-          VIVEK PUNJABI <span style={{ color: 'var(--mode-accent)', marginLeft: '0.5rem' }}>//</span>
+        <div style={{ fontWeight: 700, fontSize: '1.1rem', fontFamily: 'var(--font-mono)', letterSpacing: '-0.02em', color: 'var(--on-surface)' }}>
+          VIVEK PUNJABI <span style={{ color: 'var(--mode-accent)', marginLeft: '0.5rem', transition: 'color 0.6s' }}>//</span>
         </div>
         
-        <nav style={{ display: 'flex', gap: '2rem' }}>
-          <a href="#intelligence" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Intelligence</a>
-          <a href="#career" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Career</a>
-          <a href="#contact" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Contact</a>
+        <nav style={{ display: 'flex', gap: '2.5rem' }}>
+          <a href="#console-demo" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Console</a>
+          <a href="#pillars" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Pillars</a>
+          <a href="#contact" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem', color: 'var(--on-surface-variant)', transition: 'color 0.3s' }}>Connect</a>
         </nav>
       </header>
 
+      {/* Main Sections */}
       <main>
+        {/* Section 1: Hero */}
         <Hero />
         
-        <div id="intelligence" className="section-split" style={{ padding: '4rem 0' }}>
-          <AIConsole />
+        {/* Section 2: GTM Console Demo */}
+        <AIConsole />
+        
+        {/* Section 3: GTM Pillars & Case Studies */}
+        <div id="pillars" className="section-base">
+          <CaseStudyGrid />
         </div>
 
-        <CaseStudyGrid />
-
-        <section id="career" style={{ padding: '8rem 2rem', textAlign: 'center' }}>
-          <div className="label" style={{ marginBottom: '1rem' }}>Timeline</div>
-          <h2 className="display-lg" style={{ fontSize: '3rem' }}>Path to <span style={{ color: 'var(--mode-accent)' }}>Sovereignty</span></h2>
-          <p style={{ marginTop: '2rem', color: 'var(--secondary)', maxWidth: '600px', margin: '2rem auto' }}>
-            A career forged in sales performance, refined by analytical marketing strategy, and accelerated by AI-native workflows.
+        {/* Section 4: Contact Footer */}
+        <section id="contact" className="section-split" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="label" style={{ color: 'var(--mode-accent)', marginBottom: '1.5rem', transition: 'color 0.6s' }}>Deployment</div>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '2rem', fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>
+            Deploy <span style={{ color: 'var(--mode-accent)', transition: 'color 0.6s' }}>GTM Automation</span>.
+          </h2>
+          <p style={{ color: 'var(--on-surface-variant)', maxWidth: '600px', marginBottom: '3rem', fontSize: '1.1rem' }}>
+            Ready to scale your SaaS positioning with interactive demos and custom GTM pipelines? Let's connect.
           </p>
-          <div className="glass-card" style={{ maxWidth: '800px', margin: '4rem auto', textAlign: 'left' }}>
-            <div style={{ borderLeft: '2px solid var(--mode-accent)', paddingLeft: '2rem' }}>
-              <div style={{ marginBottom: '2rem' }}>
-                <div className="label" style={{ color: 'var(--mode-accent)' }}>Current</div>
-                <h3 style={{ fontSize: '1.5rem' }}>Product Marketing Specialist</h3>
-                <p style={{ color: 'var(--secondary)' }}>Solving high-stake GTM challenges with AI precision.</p>
-              </div>
-              <div>
-                <div className="label">Origins</div>
-                <h3 style={{ fontSize: '1.5rem' }}>Sales Development & Performance</h3>
-                <p style={{ color: 'var(--secondary)' }}>Building the foundation of ruthless prioritization and conversion focus.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" style={{ padding: '8rem 2rem', background: 'var(--surface-container-low)', textAlign: 'center' }}>
-          <div className="label">Connect</div>
-          <h2 style={{ fontSize: '4rem', margin: '2rem 0' }}>Deploy <span style={{ color: 'var(--mode-accent)' }}>Excellence.</span></h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
-            <button className="btn-primary" onClick={() => window.location.href = 'mailto:vivek@example.com'}>Email</button>
-            <button className="btn-primary" onClick={() => window.open('https://linkedin.com/in/vivekpunjabi', '_blank')}>LinkedIn</button>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <button className="btn-primary" onClick={() => window.location.href = 'mailto:vivek@example.com?subject=GTM%20Dissection'}>
+              Deploy Pipeline
+            </button>
+            <button className="btn-secondary" onClick={() => window.open('https://www.linkedin.com/in/vivek-punjabi/', '_blank')}>
+              LinkedIn Profile
+            </button>
           </div>
         </section>
       </main>
 
-      <footer style={{ padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid var(--glass-border)', opacity: 0.5 }}>
-        <div className="label">© 2026 Vivek Punjabi — All rights reserved. Built with Sovereign Intelligence.</div>
+      {/* Footer */}
+      <footer style={{ padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(199, 198, 198, 0.05)', opacity: 0.4 }}>
+        <div className="label" style={{ fontSize: '0.7rem' }}>
+          © 2026 Vivek Punjabi — Powered by Editorial Noir & Sovereign Intelligence
+        </div>
       </footer>
     </div>
   );
