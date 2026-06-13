@@ -1,25 +1,27 @@
 import React from 'react';
 import Interactive3DCard from './Interactive3DCard';
+import Reveal from './Reveal';
 
 const AlignmentPhilosophy = () => {
   return (
-    <section id="pillars" style={{ padding: '8rem 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-      
-      <div style={{ textAlign: 'center', marginBottom: '5rem', maxWidth: '800px', margin: '0 auto 5rem' }}>
+    <section id="pillars" style={{ padding: 'clamp(4rem, 8vh, 7rem) 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+
+      <Reveal style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 5rem' }}>
         <div className="label" style={{ marginBottom: '1rem', color: 'var(--accent-warm)' }}>
           // THE ALIGNMENT PHILOSOPHY
         </div>
-        <h2 className="display" style={{ fontSize: '3rem', marginBottom: '2rem' }}>
+        <h2 className="display" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '2rem' }}>
           Two Sides of the Same <span style={{ color: 'var(--accent-warm)' }}>GTM Coin.</span>
         </h2>
         <p style={{ color: 'var(--on-surface-variant)', fontSize: '1.25rem', lineHeight: 1.6 }}>
           Most marketers have never carried a sales number. Most salespeople have never written positioning. I've done both — so the GTM systems I build are designed to convert into pipeline, not just look good in a deck.
         </p>
-      </div>
+      </Reveal>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        
+
         {/* Pillar 1 */}
+        <Reveal delay={0.05}>
         <Interactive3DCard>
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
             <div className="label" style={{ opacity: 0.5 }}>01</div>
@@ -29,8 +31,10 @@ const AlignmentPhilosophy = () => {
             </p>
           </div>
         </Interactive3DCard>
+        </Reveal>
 
         {/* Pillar 2 */}
+        <Reveal delay={0.12}>
         <Interactive3DCard>
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
             <div className="label" style={{ opacity: 0.5 }}>02</div>
@@ -40,8 +44,10 @@ const AlignmentPhilosophy = () => {
             </p>
           </div>
         </Interactive3DCard>
+        </Reveal>
 
         {/* Pillar 3 */}
+        <Reveal delay={0.18}>
         <Interactive3DCard>
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
             <div className="label" style={{ opacity: 0.5 }}>03</div>
@@ -51,6 +57,7 @@ const AlignmentPhilosophy = () => {
             </p>
           </div>
         </Interactive3DCard>
+        </Reveal>
 
       </div>
     </section>

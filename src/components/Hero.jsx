@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 const MaskedText = ({ children, delay = 0 }) => {
+  const reduce = useReducedMotion();
   return (
     <div style={{ overflow: 'hidden', display: 'inline-block' }}>
       <motion.div
-        initial={{ y: "110%" }}
-        animate={{ y: "0%" }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 70, 
-          damping: 20, 
-          delay: delay 
+        initial={reduce ? false : { y: '110%' }}
+        animate={{ y: '0%' }}
+        transition={{
+          type: 'spring',
+          stiffness: 90,
+          damping: 18,
+          delay: delay,
         }}
       >
         {children}
@@ -20,96 +21,115 @@ const MaskedText = ({ children, delay = 0 }) => {
   );
 };
 
+const HEADLINES = [
+  {
+    key: 'marketing',
+    lead: 'Position SaaS narratives with',
+    accent: 'custom code.',
+    accentColor: 'var(--accent-warm)',
+  },
+  {
+    key: 'sales',
+    lead: 'Arm your sales teams with',
+    accent: 'custom AI.',
+    accentColor: 'var(--accent-cool)',
+  },
+];
+
 const Hero = () => {
-  const [isMarketing, setIsMarketing] = useState(true);
+  const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
+    // Respect reduced-motion: don't auto-cycle the headline.
+    if (reduce) return;
     const interval = setInterval(() => {
-      setIsMarketing(prev => !prev);
-    }, 4000);
+      setIndex((prev) => (prev + 1) % HEADLINES.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [reduce]);
+
+  const current = HEADLINES[index];
 
   return (
-    <section 
-      style={{ 
-        minHeight: '100vh', 
-        display: 'flex', 
-        flexDirection: 'column', 
-        justifyContent: 'center', 
+    <section
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
         padding: '0 2rem',
         maxWidth: '1200px',
-        margin: '0 auto'
+        margin: '0 auto',
       }}
     >
       <div style={{ position: 'relative', zIndex: 10 }}>
-        
+
         <div className="label" style={{ marginBottom: '2rem', color: 'var(--on-surface-variant)' }}>
           <MaskedText delay={0.1}>ROLE // PRODUCT MARKETING MANAGER — GTM SYSTEMS BUILDER</MaskedText>
         </div>
-        
-        <h1 className="display-lg" style={{ marginBottom: '2rem', color: 'var(--on-surface)', minHeight: '120px' }}>
-          <div style={{ overflow: 'hidden' }}>
-            <AnimatePresence mode="wait">
-              {isMarketing ? (
-                <motion.div
-                  key="marketing"
-                  initial={{ y: "100%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                >
-                  Position SaaS narratives with <br />
-                  <span style={{ color: 'var(--accent-warm)' }}>custom code.</span>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="sales"
-                  initial={{ y: "100%", opacity: 0 }}
-                  animate={{ y: "0%", opacity: 1 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                >
-                  Arm your sales teams with <br />
-                  <span style={{ color: 'var(--accent-cool)' }}>custom AI.</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+
+        {/*
+          Reserved-height stage with absolutely-positioned, crossfading variants.
+          This prevents both the blank-frame flash and the layout reflow that the
+          previous mode="wait" vertical-slide swap produced.
+        */}
+        <h1
+          className="display-lg hero-headline"
+          style={{ position: 'relative', marginBottom: '2.5rem', color: 'var(--on-surface)' }}
+        >
+          {/* Invisible spacer reserves the tallest variant's height to lock layout */}
+          <span aria-hidden="true" style={{ visibility: 'hidden', display: 'block' }}>
+            Position SaaS narratives with <br /> custom code.
+          </span>
+          <AnimatePresence>
+            <motion.span
+              key={current.key}
+              initial={reduce ? false : { opacity: 0, y: 24, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, y: -24, filter: 'blur(6px)' }}
+              transition={{ duration: reduce ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+              style={{ position: 'absolute', inset: 0 }}
+            >
+              {current.lead} <br />
+              <span style={{ color: current.accentColor }}>{current.accent}</span>
+            </motion.span>
+          </AnimatePresence>
         </h1>
-        
-        <p 
-          style={{ 
-            fontSize: '1.25rem', 
-            maxWidth: '700px', 
+
+        <p
+          style={{
+            fontSize: '1.25rem',
+            maxWidth: '700px',
             color: 'var(--on-surface-variant)',
             fontWeight: 400,
             lineHeight: 1.6,
-            marginBottom: '4rem'
+            marginBottom: '3.5rem',
           }}
         >
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1 }}
+            transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: 'inline-block' }}
           >
             I'm a Product Marketing Manager who builds. Years in B2C sales taught me what actually moves people to buy. Now I bring that into positioning and conversion copy — and because I can code, I don't stop at the brief. I build the personas, the demos, and the GTM tooling myself.
           </motion.span>
         </p>
-        
-        <motion.div 
+
+        <motion.div
           style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <button className="btn-primary" onClick={() => {
             const el = document.getElementById('intelligence');
-            if(el) el.scrollIntoView({ behavior: 'smooth' });
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}>
             Run AI GTM Pipeline
           </button>
-          <button className="btn-outline" onClick={() => window.location.href='mailto:punjabivivek1993@gmail.com'}>
+          <button className="btn-outline" onClick={() => window.location.href = 'mailto:punjabivivek1993@gmail.com'}>
             Get Free GTM Dissection
           </button>
         </motion.div>

@@ -1,14 +1,15 @@
 import React from 'react';
 import Interactive3DCard from './Interactive3DCard';
+import Reveal from './Reveal';
 
 const PortfolioGallery = () => {
   return (
-    <section id="story" style={{ padding: '8rem 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-      
+    <section id="story" style={{ padding: 'clamp(4rem, 8vh, 7rem) 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
-        
+
         {/* Left Column: Origin Story */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Reveal style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="label" style={{ marginBottom: '2rem', color: 'var(--accent-warm)' }}>
             // THE ORIGIN
           </div>
@@ -27,7 +28,7 @@ const PortfolioGallery = () => {
           <div className="label" style={{ marginTop: '3rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1rem' }}>
             PMM // BUILDER
           </div>
-        </div>
+        </Reveal>
 
         {/* Right Column: Selected Builds */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -35,6 +36,7 @@ const PortfolioGallery = () => {
             Selected Builds
           </div>
 
+          <Reveal delay={0.05}>
           <Interactive3DCard>
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
               <h3 style={{ fontSize: '1.5rem', margin: 0 }}>Interactive Product Tour Framework</h3>
@@ -50,7 +52,9 @@ const PortfolioGallery = () => {
               </a>
             </div>
           </Interactive3DCard>
+          </Reveal>
 
+          <Reveal delay={0.12}>
           <Interactive3DCard>
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
               <h3 style={{ fontSize: '1.5rem', margin: 0 }}>AI Persona & Positioning Mapper</h3>
@@ -66,7 +70,9 @@ const PortfolioGallery = () => {
               </a>
             </div>
           </Interactive3DCard>
+          </Reveal>
 
+          <Reveal delay={0.18}>
           <Interactive3DCard>
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
               <h3 style={{ fontSize: '1.5rem', margin: 0 }}>This Portfolio</h3>
@@ -82,6 +88,7 @@ const PortfolioGallery = () => {
               </a>
             </div>
           </Interactive3DCard>
+          </Reveal>
 
         </div>
       </div>

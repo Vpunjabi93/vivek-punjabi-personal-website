@@ -4,45 +4,43 @@ import { Sphere, MeshDistortMaterial } from '@react-three/drei';
 
 const ScrollCamera = () => {
   const { camera } = useThree();
-  
+
   useFrame(() => {
-    // Parallax effect: Move camera down as user scrolls
+    // Parallax: drift the camera as the user scrolls so the forms move with depth
     const scrollY = window.scrollY;
-    // Slow down the parallax heavily for subtlety
-    camera.position.y = -(scrollY * 0.002);
-    // Move slightly into the Z axis for depth shift
-    camera.position.z = 5 + (scrollY * 0.001);
+    camera.position.y = -(scrollY * 0.0022);
+    camera.position.z = 6 + (scrollY * 0.0009);
   });
-  
+
   return null;
 };
 
-const AnimatedShape = () => {
+const Blob = ({ position, color, speed, distort, scale }) => {
   const meshRef = useRef();
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     const scrollY = window.scrollY;
-    
-    // Base animation
-    meshRef.current.position.y = Math.sin(t / 2) * 0.2;
-    meshRef.current.rotation.x = Math.sin(t / 4) * 0.5 + (scrollY * 0.001);
-    meshRef.current.rotation.y = Math.sin(t / 2) * 0.5 + (scrollY * 0.002);
-    
-    // Make the sphere "react" to scroll momentum by scaling slightly
-    const scale = 1.5 + Math.min(scrollY * 0.0005, 0.5);
-    meshRef.current.scale.set(scale, scale, scale);
+
+    meshRef.current.position.y = position[1] + Math.sin(t / 2.5) * 0.3;
+    meshRef.current.position.x = position[0] + Math.cos(t / 3.5) * 0.2;
+    meshRef.current.rotation.x = Math.sin(t / 5) * 0.5 + scrollY * 0.0008;
+    meshRef.current.rotation.y = Math.sin(t / 3) * 0.5 + scrollY * 0.0015;
+
+    // Gentle breathing scale tied to scroll momentum
+    const s = scale + Math.min(scrollY * 0.0003, 0.4);
+    meshRef.current.scale.set(s, s, s);
   });
 
   return (
-    <Sphere ref={meshRef} args={[1.5, 64, 64]} position={[0, 0, 0]} scale={1.5}>
+    <Sphere ref={meshRef} args={[1.5, 64, 64]} position={position} scale={scale}>
       <MeshDistortMaterial
-        color="#F4F4F0"
+        color={color}
         attach="material"
-        distort={0.4}
-        speed={1.5}
-        roughness={0.2}
-        metalness={0.1}
+        distort={distort}
+        speed={speed}
+        roughness={0.18}
+        metalness={0.15}
         envMapIntensity={1}
         clearcoat={1}
         clearcoatRoughness={0.1}
@@ -53,13 +51,39 @@ const AnimatedShape = () => {
 
 const ThreeBackground = () => {
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, opacity: 0.8, pointerEvents: 'none' }}>
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[10, 10, 5]} intensity={2} color="#FFDAB9" />
-        <directionalLight position={[-10, -10, -5]} intensity={1.5} color="#87CEEB" />
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0,
+        // Light blur keeps soft, premium edges while letting the glossy
+        // 3D forms (and their highlights) read clearly on the bone canvas.
+        // Soft blur keeps premium edges; moderate opacity keeps the hero text
+        // readable while the glossy 3D forms stay clearly visible behind it.
+        filter: 'blur(26px) saturate(1.2)',
+        opacity: 0.6,
+        pointerEvents: 'none',
+      }}
+    >
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 45 }}
+        dpr={[1, 1.75]}
+        gl={{ antialias: true, powerPreference: 'high-performance', alpha: true }}
+        performance={{ min: 0.5 }}
+      >
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[8, 10, 6]} intensity={1.3} color="#FFE3C2" />
+        <directionalLight position={[-10, -6, -2]} intensity={1.1} color="#7FC8E8" />
+        <pointLight position={[2, 2, 4]} intensity={1.4} color="#FF7F50" />
         <ScrollCamera />
-        <AnimatedShape />
+        {/* Coral form drifting in the upper-right, framing the hero */}
+        <Blob position={[2.7, 1.7, -1]} color="#FF7F50" speed={1.2} distort={0.45} scale={1.7} />
+        {/* Cool counter-form anchored lower-left for depth */}
+        <Blob position={[-2.7, -1.9, -2]} color="#87CEEB" speed={0.9} distort={0.5} scale={1.5} />
       </Canvas>
     </div>
   );

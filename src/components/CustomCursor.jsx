@@ -55,6 +55,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
+      aria-hidden="true"
       style={{
         position: 'fixed',
         left: 0,

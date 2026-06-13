@@ -115,10 +115,10 @@ const AIConsole = () => {
       </div>
       
       <Interactive3DCard isLocked={isLocked}>
-        <div className="ai-console" style={{ minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
+        <div className="ai-console" style={{ minHeight: '340px', display: 'flex', flexDirection: 'column' }}>
           
           {/* Header */}
-          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', opacity: 0.8, borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
+          <div aria-hidden="true" style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', opacity: 0.8, borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
@@ -134,20 +134,28 @@ const AIConsole = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, filter: 'url(#sun-dry-etching)', scale: 0.98 }}
                 transition={{ duration: 0.5 }}
-                style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: '1.5rem' }}
               >
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--on-surface-variant)' }}>
+                  <span style={{ color: 'var(--accent-warm)' }}>$</span> pmm_engine --ready<span className="console-caret">▋</span>
+                </div>
                 <form onSubmit={handleRunAudit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <label className="label">Target System URL / Company Name</label>
-                  <div style={{ display: 'flex', gap: '1rem' }}>
-                    <input 
-                      type="text" 
+                  <label className="label" htmlFor="gtm-url">Target System URL / Company Name</label>
+                  <div className="console-input-row" style={{ display: 'flex', gap: '1rem' }}>
+                    <input
+                      id="gtm-url"
+                      name="gtm-url"
+                      type="text"
                       value={url}
+                      aria-label="Target system URL or company name"
+                      autoComplete="off"
                       onFocus={() => setIsInputFocused(true)}
                       onBlur={() => setIsInputFocused(false)}
                       onChange={(e) => setUrl(e.target.value)}
                       placeholder="e.g. stripe.com or Notion"
                       style={{
                         flex: 1,
+                        minWidth: 0,
                         padding: '1rem',
                         background: 'rgba(17, 17, 17, 0.03)',
                         border: '1px solid var(--glass-border)',
@@ -158,7 +166,7 @@ const AIConsole = () => {
                         outline: 'none'
                       }}
                     />
-                    <button type="submit" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <button type="submit" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
                       Execute <ArrowRight size={16} />
                     </button>
                   </div>
@@ -251,6 +259,14 @@ const AIConsole = () => {
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
+        }
+        .console-caret {
+          margin-left: 2px;
+          animation: caret-blink 1.1s steps(1) infinite;
+        }
+        @keyframes caret-blink {
+          0%, 50% { opacity: 1; }
+          50.01%, 100% { opacity: 0; }
         }
         .markdown-etching h3 {
           font-family: var(--font-display);
