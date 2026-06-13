@@ -96,22 +96,7 @@ const AIConsole = () => {
     }
   }, [logs, status]);
 
-  // Autoscroll logic for the complete state
-  useEffect(() => {
-    let scrollInterval;
-    if (status === 'complete' && resultContainerRef.current) {
-      // Create a smooth auto-scroll effect while the filter is "burning" the text in
-      let ticks = 0;
-      scrollInterval = setInterval(() => {
-        if (resultContainerRef.current) {
-          resultContainerRef.current.scrollBy({ top: 3, behavior: 'auto' });
-        }
-        ticks++;
-        if (ticks > 80) clearInterval(scrollInterval); // stop after ~2.4 seconds
-      }, 30);
-    }
-    return () => clearInterval(scrollInterval);
-  }, [status]);
+
 
   return (
     <section style={{ padding: '6rem 2rem', maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
@@ -189,9 +174,20 @@ const AIConsole = () => {
                 exit={{ opacity: 0 }}
                 style={{ flex: 1, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--on-surface-variant)' }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', color: 'var(--accent-warm)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', color: 'var(--accent-warm)' }}>
                   <Loader2 className="animate-spin" size={20} />
                   <span>Establishing LLM connection...</span>
+                </div>
+                
+                <div style={{ 
+                  padding: '0.75rem 1rem', 
+                  borderLeft: '2px solid var(--accent-warm)', 
+                  background: 'rgba(255, 127, 80, 0.05)', 
+                  marginBottom: '2rem',
+                  fontSize: '0.85rem',
+                  color: 'var(--on-surface)'
+                }}>
+                  <strong style={{ color: 'var(--accent-warm)' }}>HEADS UP:</strong> We actually scrape the live website and query a massive 550-Billion parameter LLM to synthesize this teardown. Real work takes compute. This will take roughly 2-3 minutes to generate.
                 </div>
                 {logs.map((log, index) => {
                   const isThought = log.startsWith('~');
