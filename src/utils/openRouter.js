@@ -1,4 +1,5 @@
 export const generateGTMAudit = async (targetUrl) => {
+  // Load the API key from environment variables instead of hardcoding
   const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
   
   if (!apiKey) {
