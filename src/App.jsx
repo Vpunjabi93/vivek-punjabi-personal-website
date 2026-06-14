@@ -90,16 +90,16 @@ function App() {
         </div>
 
         <section id="contact" style={{ padding: 'clamp(5rem, 12vh, 9rem) 2rem 8rem', background: 'var(--surface-container-low)', textAlign: 'center', position: 'relative', zIndex: 10, borderTop: '1px solid var(--glass-border)' }}>
-          <div className="label" style={{ color: 'var(--accent-warm)' }}>Deployment</div>
+          <div className="label" style={{ color: 'var(--accent-warm)' }}>Connect</div>
           <h2 style={{ fontSize: 'clamp(2.25rem, 6vw, 4rem)', margin: '2rem 0', fontFamily: 'var(--font-display)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.05 }}>
-            Deploy <span style={{ color: 'var(--accent-warm)' }}>GTM Automation.</span>
+            Open to <span style={{ color: 'var(--accent-warm)' }}>New Opportunities.</span>
           </h2>
           <p style={{ color: 'var(--on-surface-variant)', fontSize: '1.25rem', marginBottom: '3rem' }}>
-            Need positioning, conversion copy, or a custom GTM pipeline built for your product?<br/>Let's talk.
+            I'm currently looking for my next Product Marketing role — somewhere I can bring this same builder mindset to positioning, conversion, and GTM systems.<br/>If that sounds like a fit, let's connect.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
             <button className="btn-primary" onClick={() => window.location.href = 'mailto:punjabivivek1993@gmail.com'}>
-              Deploy Pipeline
+              Get In Touch
             </button>
             <button className="btn-outline" onClick={() => window.open('https://linkedin.com/in/vivekpunjabi', '_blank')}>
               LinkedIn Profile

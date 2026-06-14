@@ -130,7 +130,7 @@ const Hero = () => {
             Run AI GTM Pipeline
           </button>
           <button className="btn-outline" onClick={() => window.location.href = 'mailto:punjabivivek1993@gmail.com'}>
-            Get Free GTM Dissection
+            Get In Touch
           </button>
         </motion.div>
       </div>

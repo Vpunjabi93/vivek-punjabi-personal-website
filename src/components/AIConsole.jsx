@@ -110,7 +110,7 @@ const AIConsole = () => {
           Drop in a URL. Watch the audit run.
         </h2>
         <p style={{ color: 'var(--on-surface-variant)', fontSize: '1.125rem', lineHeight: 1.6 }}>
-          This isn't a mockup. It's a working pipeline I built — it crawls a homepage, profiles the audience, and outputs positioning or sales collateral in real time. Try it on your own product.
+          This isn't a mockup — it's a working pipeline I built myself. Drop in any company's homepage and watch it crawl the content, profile the audience, and generate positioning angles in real time. It's the same kind of system I'd bring to a GTM team.
         </p>
       </div>
       
