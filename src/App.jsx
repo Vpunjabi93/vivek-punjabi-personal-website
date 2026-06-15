@@ -5,6 +5,7 @@ import AIConsole from './components/AIConsole';
 import PortfolioGallery from './components/PortfolioGallery';
 import AlignmentPhilosophy from './components/AlignmentPhilosophy';
 import ToolEcosystem from './components/ToolEcosystem';
+import SystemDiagram from './components/SystemDiagram';
 import CaseStudies from './components/CaseStudies';
 import ThreeBackground from './components/ThreeBackground';
 import CustomCursor from './components/CustomCursor';
@@ -78,6 +79,10 @@ function App() {
 
       <main id="main-content" style={{ paddingTop: '80px' }}>
         <Hero />
+
+        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
+          <SystemDiagram />
+        </div>
 
         <div id="intelligence" style={{ position: 'relative', marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
           <AIConsole />
