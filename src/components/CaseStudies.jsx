@@ -46,17 +46,14 @@ const CaseStudies = () => {
             layoutId={`card-${study.id}`}
             key={study.id}
             onClick={() => setSelectedId(study.id)}
+            className="glass-card"
             style={{
-              background: 'rgba(17, 17, 17, 0.03)',
-              border: '1px solid var(--glass-border)',
-              borderRadius: '12px',
               padding: '2.5rem',
               cursor: 'pointer',
               position: 'relative',
               overflow: 'hidden',
-              backdropFilter: 'blur(10px)'
             }}
-            whileHover={{ y: -4, borderColor: 'var(--on-surface-variant)' }}
+            whileHover={{ y: -4, borderColor: 'rgba(17, 17, 17, 0.1)' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.5rem' }}>
@@ -89,10 +86,8 @@ const CaseStudies = () => {
             
             <motion.div
               layoutId={`card-${selectedId}`}
+              className="glass-card"
               style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--glass-border)',
-                borderRadius: '16px',
                 width: '100%',
                 maxWidth: '800px',
                 maxHeight: '85vh',
@@ -108,7 +103,7 @@ const CaseStudies = () => {
                 const study = CASE_STUDIES.find(s => s.id === selectedId);
                 return (
                   <>
-                    <div style={{ position: 'sticky', top: 0, background: 'var(--surface)', zIndex: 10, padding: '2.5rem 2.5rem 1.5rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ position: 'sticky', top: 0, zIndex: 10, padding: '2.5rem 2.5rem 1.5rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', background: 'var(--glass-fill)', backdropFilter: 'blur(var(--glass-blur))' }}>
                       <div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
                           {study.tags.map(tag => (

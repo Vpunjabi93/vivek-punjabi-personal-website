@@ -7,18 +7,18 @@ const ARCHETYPES = [
     id: 'data',
     title: "Data & Optimization",
     tools: [
-      { name: "GA4", icon: "https://cdn.simpleicons.org/googleanalytics/ffffff" },
-      { name: "Data Studio", icon: "https://cdn.simpleicons.org/looker/ffffff" },
-      { name: "Excel", icon: "https://cdn.simpleicons.org/microsoftexcel/ffffff" },
-      { name: "VWO", icon: "https://cdn.simpleicons.org/vwo/ffffff" }
+      { name: "GA4", icon: "https://cdn.simpleicons.org/googleanalytics" },
+      { name: "Data Studio", icon: "https://cdn.simpleicons.org/looker" },
+      { name: "Excel", icon: "https://cdn.simpleicons.org/microsoftexcel" },
+      { name: "VWO", icon: "https://cdn.simpleicons.org/vwo" }
     ]
   },
   {
     id: 'ai',
     title: "AI & Development",
     tools: [
-      { name: "Claude Code", icon: "https://cdn.simpleicons.org/anthropic/ffffff" },
-      { name: "Gemini", icon: "https://cdn.simpleicons.org/googlegemini/ffffff" },
+      { name: "Claude Code", icon: "https://cdn.simpleicons.org/anthropic" },
+      { name: "Gemini", icon: "https://cdn.simpleicons.org/googlegemini" },
       { name: "Kling AI", text: "Kling" },
       { name: "Google Stitch", icon: "https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2026/03/google-stitch-logo.png?q=70&fit=contain&w=420&dpr=1", invert: false },
       { name: "Antigravity", icon: "https://antigravity.google/favicon.ico", text: "AG" }
@@ -28,9 +28,9 @@ const ARCHETYPES = [
     id: 'design',
     title: "Design & Ops",
     tools: [
-      { name: "Asana", icon: "https://cdn.simpleicons.org/asana/ffffff" },
-      { name: "Adobe Firefly", icon: "https://cdn.simpleicons.org/adobe/ffffff" },
-      { name: "Canva", icon: "https://cdn.simpleicons.org/canva/ffffff" }
+      { name: "Asana", icon: "https://cdn.simpleicons.org/asana" },
+      { name: "Adobe Firefly", icon: "https://cdn.simpleicons.org/adobe" },
+      { name: "Canva", icon: "https://cdn.simpleicons.org/canva" }
     ]
   }
 ];
@@ -66,7 +66,7 @@ const ToolEcosystem = () => {
         {ARCHETYPES.map((archetype, index) => (
           <React.Fragment key={archetype.id}>
             <motion.div 
-              className="ecosystem-node"
+              className="ecosystem-node glass-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -123,11 +123,6 @@ const ToolEcosystem = () => {
 
         .ecosystem-node {
           flex: 1;
-          background: rgba(17, 17, 17, 0.03);
-          border: 1px solid var(--glass-border);
-          border-radius: 16px;
-          padding: 2rem;
-          backdrop-filter: blur(10px);
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
