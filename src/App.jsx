@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import Lenis from 'lenis';
+import { Analytics } from '@vercel/analytics/react';
 import Hero from './components/Hero';
 import AIConsole from './components/AIConsole';
 import PortfolioGallery from './components/PortfolioGallery';
@@ -126,6 +127,7 @@ function App() {
       <footer style={{ padding: '4rem 2rem', textAlign: 'center', opacity: 0.7, position: 'relative', zIndex: 10, background: 'var(--surface)' }}>
         <div className="label" style={{ textTransform: 'none' }}>© 2026 Vivek Punjabi — PMM with a Builder Mindset</div>
       </footer>
+      <Analytics />
     </div>
   );
 }
