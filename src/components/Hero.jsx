@@ -23,15 +23,15 @@ const MaskedText = ({ children, delay = 0 }) => {
 
 const HEADLINES = [
   {
-    key: 'marketing',
-    lead: 'Position SaaS narratives with',
-    accent: 'custom code.',
+    key: 'growth',
+    lead: 'Scale digital products with',
+    accent: 'data-driven CRO.',
     accentColor: 'var(--accent-warm)',
   },
   {
-    key: 'sales',
-    lead: 'Arm your sales teams with',
-    accent: 'custom AI.',
+    key: 'efficiency',
+    lead: 'Accelerate GTM workflows with',
+    accent: 'AI-integrated systems.',
     accentColor: 'var(--accent-cool)',
   },
 ];
@@ -124,10 +124,10 @@ const Hero = () => {
           transition={{ delay: 0.75, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <button className="btn-primary" onClick={() => {
-            const el = document.getElementById('intelligence');
+            const el = document.getElementById('case-studies');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}>
-            Run AI GTM Pipeline
+            View Proof of Work
           </button>
           <button className="btn-outline" onClick={() => window.location.href = 'mailto:punjabivivek1993@gmail.com'}>
             Get In Touch

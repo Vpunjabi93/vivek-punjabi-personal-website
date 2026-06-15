@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import AIConsole from './components/AIConsole';
 import PortfolioGallery from './components/PortfolioGallery';
 import AlignmentPhilosophy from './components/AlignmentPhilosophy';
+import ToolEcosystem from './components/ToolEcosystem';
 import CaseStudies from './components/CaseStudies';
 import ThreeBackground from './components/ThreeBackground';
 import CustomCursor from './components/CustomCursor';
@@ -88,6 +89,10 @@ function App() {
 
         <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
           <AlignmentPhilosophy />
+        </div>
+
+        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
+          <ToolEcosystem />
         </div>
 
         <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
