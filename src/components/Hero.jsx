@@ -23,17 +23,11 @@ const MaskedText = ({ children, delay = 0 }) => {
 
 const HEADLINES = [
   {
-    key: 'growth',
-    lead: 'Scale digital products with',
-    accent: 'data-driven CRO.',
+    key: 'intersection',
+    lead: 'I sit at the intersection of',
+    accent: 'Marketing, Strategy, and Sales.',
     accentColor: 'var(--accent-warm)',
-  },
-  {
-    key: 'efficiency',
-    lead: 'Accelerate GTM workflows with',
-    accent: 'AI-integrated systems.',
-    accentColor: 'var(--accent-cool)',
-  },
+  }
 ];
 
 const Hero = () => {
@@ -80,7 +74,7 @@ const Hero = () => {
         >
           {/* Invisible spacer reserves the tallest variant's height to lock layout */}
           <span aria-hidden="true" style={{ visibility: 'hidden', display: 'block' }}>
-            Position SaaS narratives with <br /> custom code.
+            I sit at the intersection of <br /> Marketing, Strategy, and Sales.
           </span>
           <AnimatePresence>
             <motion.span
