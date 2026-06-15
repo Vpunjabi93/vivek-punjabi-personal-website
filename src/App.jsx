@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import AIConsole from './components/AIConsole';
 import PortfolioGallery from './components/PortfolioGallery';
 import AlignmentPhilosophy from './components/AlignmentPhilosophy';
+import CaseStudies from './components/CaseStudies';
 import ThreeBackground from './components/ThreeBackground';
 import CustomCursor from './components/CustomCursor';
 
@@ -87,6 +88,10 @@ function App() {
 
         <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
           <AlignmentPhilosophy />
+        </div>
+
+        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
+          <CaseStudies />
         </div>
 
         <section id="contact" style={{ padding: 'clamp(5rem, 12vh, 9rem) 2rem 8rem', background: 'var(--surface-container-low)', textAlign: 'center', position: 'relative', zIndex: 10, borderTop: '1px solid var(--glass-border)' }}>
