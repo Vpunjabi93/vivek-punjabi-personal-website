@@ -8,21 +8,21 @@ const PortfolioGallery = () => {
   const coreProjects = [
     {
       title: "Interactive Product Tour Framework",
-      desc: "A custom React component library for embedding step-by-step, clickable walkthroughs into SaaS onboarding — built to teach product features without adding friction.",
+      desc: "User onboarding is the ultimate conversion funnel. I built this custom React library to embed interactive, step-by-step walkthroughs into SaaS products, teaching features through action instead of forcing users to read manuals.",
       tech: ["React", "Framer Motion"],
       link: "#",
       linkText: "View Project →"
     },
     {
       title: "AI Persona & Positioning Mapper",
-      desc: "A Node pipeline that parses a product's landing page, runs it through custom LLM prompts, and outputs target personas, friction points, and a product-market-fit read.",
+      desc: "Understanding your audience shouldn't take weeks of manual scraping. I built this Node pipeline to crawl product landing pages, extract copy, and run custom LLM analysis to instantly map target personas, pain points, and product-market fit.",
       tech: ["Node.js", "LLM APIs"],
       link: "#",
       linkText: "View Repo →"
     },
     {
       title: "This Portfolio",
-      desc: "The site you're on. Interactive WebGL environment, a live GTM audit pipeline, and fluid physics-based DOM animations.",
+      desc: "A portfolio shouldn't just list skills—it should demonstrate them. I built this site to combine traditional copywriting with interactive WebGL components and a live Gemini-powered landing page auditor.",
       tech: ["Three.js", "React"],
       link: "#",
       linkText: "View Source →"
@@ -32,22 +32,22 @@ const PortfolioGallery = () => {
   const hobbyProjects = [
     {
       title: "Google Analytics MCP Server",
-      desc: "A Model Context Protocol (MCP) server published on PyPI. Connects LLMs directly to Google Analytics 4 APIs, enabling conversational AI agents to pull real-time data, query reports, and analyze conversion funnels.",
-      tech: ["Python", "GA4 API", "PyPI", "GCP"],
+      desc: "Instead of guessing campaign performance, why not let AI query the raw data? I built and published this PyPI server so LLMs could directly run GA4 reports, analyze conversions, and pull real-time stats—turning AI chat into a data-backed growth tool.",
+      tech: ["Python", "GA4 API", "Model Context Protocol", "GCP"],
       link: "https://github.com/Vpunjabi93/GA4-MCP",
       linkText: "View PyPI & Repo →"
     },
     {
       title: "Google & Meta Ads Scorer",
-      desc: "A responsive campaign dashboard that evaluates Responsive Search Ads under character length limits and uses Gemini Pro API to reverse-engineer brand creative patterns, scoring new copy for win probability.",
-      tech: ["JavaScript", "Gemini API", "Responsive UI"],
+      desc: "Ad copy isn't just about creativity—it's about pattern recognition. I built this compiler to automate RSA character-limit validation and use Gemini Pro API to score copy drafts against historical winning hooks, removing guesswork from ad testing.",
+      tech: ["JavaScript", "Gemini API", "Growth Marketing"],
       link: "https://github.com/Vpunjabi93/ad-ctr-evaluator",
       linkText: "View Code →"
     },
     {
       title: "Monte Carlo Game Simulator",
-      desc: "An ensemble card game simulation engine that runs thousands of randomized Monte Carlo matches to analyze card draw rates, predict turn-by-turn arrival distributions, and test deck consistency.",
-      tech: ["JavaScript", "Probability Math", "Simulation"],
+      desc: "To optimize strategy in complex systems, simulate them. I coded this engine to run 10,000+ randomized card game matches, calculating exact turn-by-turn draw rates and testing opponent disruption models to make data-backed strategy calls.",
+      tech: ["JavaScript", "Probability Math", "Monte Carlo Simulation"],
       link: "https://github.com/Vpunjabi93/tcgp-deck-builder",
       linkText: "View Simulator →"
     }
