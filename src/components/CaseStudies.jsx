@@ -23,9 +23,20 @@ const CASE_STUDIES = [
     action: 'Before touching a single asset, I went upstream to the product strategy team to map the ICPs they were building for — so I could translate programme features into audience-relevant value rather than guess at what would land. That conversation surfaced enough ambiguity about the target profile that I pushed for primary research before committing to a positioning direction.\n\nWe ran a survey to 5,000 past candidates from our leadership programmes. 120 responded and were interviewed. The research was designed to surface behavioural drivers — what made this audience evaluate a programme, what messaging themes resonated, what objections they carried — not just demographic confirmation.\n\nThe findings reoriented the entire approach. The messaging buckets that tested strongest were Cohorts, Connections, Alumni Network, and Prestige — status and peer quality over curriculum. More importantly, the research revealed that the audience most motivated to act wasn\'t the CXO tier the programme was named for. It was N-2: VP and GM level executives using the programme as a career accelerant toward the C-suite, not current C-suite validating their position.\n\nThat was the insight I\'d call a failure of the original brief — the product was named and positioned for an audience that turned out to be less motivated to convert than the tier just below it. I flagged this finding and built the GTM around the actual audience the data showed, not the assumed one.\n\nWith the ICP clarified, I built out the full GTM stack:\n• Sales enablement: Themed around the four resonant messaging buckets. Deliverables included in-depth masterclass pitchers, competitive battle cards, single-page programme pitches, and ICP-specific objection cards covering the hesitations the research had surfaced\n• Social proof (from zero): Organised and executed an on-site shoot with programme faculty — compensating for the lack of alumni testimonials on a first-ever launch. The footage served both organic and paid\n• CRM journeys: Planned and deployed sequenced email journeys mapped to each stage of the lead funnel, with messaging adapted to where a lead sat in their evaluation\n• Awareness: Coordinated a press release alongside SEO initiatives to generate organic visibility for a programme that had no search history',
     result: 'The first batch was filled. The GTM assets held up despite the product positioning constraint.\n\nThe video content reduced Meta CPLs and lifted CTRs. The PR and SEO play generated approximately 15% of total lead share — meaningful for a programme with no prior organic footprint. CRM journeys ran at 8% open rate with 10% click-to-open rate across the funnel stages.\n\nThe real result, though, was the audience finding: the N-2 insight should have fed back into product positioning before launch — the programme name and CXO framing was a ceiling on addressable demand. That\'s the thing I\'d do differently: push the research finding harder upstream, earlier, so product positioning and GTM are solving for the same audience before either goes to market.',
     proof: 'sales enablement samples, and CRM performance data available on request.'
+  },
+  {
+    id: 'ai-health-coach',
+    title: 'Architecting a Closed-Loop AI Health Coach',
+    tags: ['Systems Integration (primary)', 'AI Workflows (secondary)'],
+    context: 'Health and fitness tracking is notoriously fragmented. We wear smartwatches, log food in generic apps, and track lifts in spreadsheets. Data goes in, but actionable intelligence rarely comes out. I didn\'t just want a dashboard that recorded my data—I needed a system that actively coached me, adjusting my training and diet in real-time based on actual telemetry.',
+    problem: 'I engineered a centralized, bi-directional system inside Notion, connecting my Galaxy Watch, diet logs, and external APIs into a single, automated coaching loop.',
+    action: '• Dynamic Diet Engineering: I built a two-way macro database. When a meal is logged, the AI evaluates the intake (protein, fats, carbs) against my calorie deficit goals. Instead of just charting the data, the AI actively recalculates my next meal plan and adapts seamlessly for variables like scheduled 24-hour fasts.\n• Automated Training Context: I integrated the MuscleWiki API directly into my workout workflow. As I log prescribed exercises, the system automatically parses the text, fetches the precise biometric video demonstrations, and links them directly into my daily notes.\n• Frictionless Edge-Case Capture: Real life rarely sticks to a script. I designed a mobile "Workout Inbox" to capture ad-hoc, off-program sessions (like an unplanned full-body trainer session). This ensures the AI maintains perfect context of my weekly active minutes without forcing me to fight the UI.',
+    result: 'A unified, zero-friction dashboard that merges biometric data (sleep, body fat %, active minutes) with AI-driven dietary and training adjustments. By treating my personal health data with the same systems-thinking I apply to GTM and marketing operations, I eliminated the silos between tracking and coaching.',
+    proof: 'View the Live Notion Dashboard',
+    link: 'https://app.notion.com/p/Smart-Gym-Coach-39703556308b803dab63ebdccdf7a3f7?source=copy_link',
+    image: '/smart-gym-dashboard.png'
   }
 ];
-
 const CaseStudies = () => {
   const [selectedId, setSelectedId] = useState(null);
 
@@ -149,9 +160,21 @@ const CaseStudies = () => {
                         <p>{study.result.split('\n\n').map((paragraph, i) => <span key={i} style={{ display: 'block', marginBottom: '1rem' }}>{paragraph}</span>)}</p>
                       </div>
 
+                      {study.image && (
+                        <div className="section">
+                          <img src={study.image} alt="Dashboard Overview" style={{ width: '100%', borderRadius: '8px', border: '1px solid var(--glass-border)', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }} />
+                        </div>
+                      )}
+
                       <div className="section" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '2rem', marginTop: '2rem' }}>
                         <h4 style={{ color: 'var(--accent-warm)' }}>Proof</h4>
-                        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{study.proof}</p>
+                        {study.link ? (
+                          <a href={study.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--on-surface)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textDecoration: 'underline' }}>
+                            {study.proof} ↗
+                          </a>
+                        ) : (
+                          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{study.proof}</p>
+                        )}
                       </div>
                     </div>
                   </>
