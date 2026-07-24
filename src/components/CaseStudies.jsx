@@ -35,6 +35,16 @@ const CASE_STUDIES = [
     proof: 'View the Live Notion Dashboard',
     link: 'https://app.notion.com/p/Smart-Gym-Coach-39703556308b803dab63ebdccdf7a3f7?source=copy_link',
     image: '/smart-gym-dashboard.png'
+  },
+  {
+    id: 'ai-cheat-code-pmm',
+    title: 'The AI Cheat Code: Automating the Product Marketing Workflow',
+    tags: ['AI Workflows (primary)', 'Growth Engineering (secondary)'],
+    context: 'Product marketing usually involves weeks of manual research: crawling competitor websites, synthesizing audience pain points, and writing positioning documents. I wanted to turn this manual workflow into an automated system that runs in seconds.',
+    problem: 'I needed a way to demonstrate my product marketing workflow on this very portfolio—not by talking about it, but by actually executing it live for any user who visits the site.',
+    action: '• The AI Console: I built a live, interactive terminal directly into this website (see the Console section above).\n• The GTM Auditor: Under the hood, it takes any company URL you drop into it, scrapes their live DOM, and runs it through a massive LLM to generate a real-time Go-To-Market audit.\n• The System Diagram: I mapped this entire logic into a central visual architecture (The System Behind the Work) where a single "Product Marketing Context" hub informs all downstream channels—CRO, Copywriting, Ads, and Sales.',
+    result: 'Instead of a static portfolio that just lists skills, this website acts as a live proof-of-concept. It demonstrates a working AI marketing pipeline that does the heavy lifting of a PMM in real time. It is an AI cheat code for GTM strategy.',
+    proof: 'Scroll up to the Live Demo Console to run the audit yourself.'
   }
 ];
 const CaseStudies = () => {
