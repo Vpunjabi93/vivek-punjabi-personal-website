@@ -1,39 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap');
+/* ═══════════════════════════════════════════════════════════════════════════
+   SWISS EDITORIAL FOLIO + OBSIDIAN ATELIER HYBRID DESIGN SYSTEM
+   Issue 04 // Vivek Punjabi — The GTM Synthesizer
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* "Hard Shell, Soft Core" Palette */
-  --surface: #F4F4F0; /* Bone White */
-  --surface-container-low: #EBEBE6;
-  --surface-container: #E2E2DC;
-  
-  /* Text */
-  --on-surface: #111111; /* Deep Charcoal */
-  --on-surface-variant: #4A4A4A;
-  
-  /* Soft Core Accents */
-  --accent-warm: #FF7F50; /* Soft Coral */
-  --accent-peach: #FFDAB9;
-  --accent-cool: #87CEEB;
-  
-  /* Glass Effects */
-  --glass-fill: rgba(255, 255, 255, 0.6);
-  --glass-blur: 16px;
-  --glass-border: rgba(17, 17, 17, 0.05);
-  
-  /* Typography */
-  --font-display: 'Epilogue', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'Space Grotesk', sans-serif;
-  
+  /* Light Broadsheet Palette (Option 1 — Swiss Editorial Folio) */
+  --surface: #F4F1EA; /* Warm Archival Newsprint */
+  --surface-container-low: #EAE5DA; /* Mute Archival Cream */
+  --surface-container: #E1DBD0;
+  --surface-paper-bright: #FAF8F3;
+
+  /* Ink & Typography */
+  --on-surface: #111111; /* Deep Charcoal Litho Ink */
+  --on-surface-variant: #3E3D3A;
+  --ink-muted: #6E6B65;
+
+  /* Editorial Vermilion & Accents */
+  --accent-warm: #C8281E; /* Vermilion Editorial Red */
+  --accent-vermilion: #C8281E;
+  --accent-amber: #D97706;
+  --accent-peach: #F5D0C5;
+  --accent-cool: #1D4ED8;
+
+  /* Structural Grid Hairlines */
+  --grid-rule: rgba(17, 17, 17, 0.16);
+  --grid-rule-strong: #111111;
+  --glass-fill: rgba(250, 248, 243, 0.88);
+  --glass-blur: 12px;
+  --glass-border: rgba(17, 17, 17, 0.16);
+
+  /* Inverted Dark-Luxury Spread Tokens (Option 2 — Obsidian Atelier) */
+  --noir-bg: #0B0B0D;
+  --noir-panel: #141418;
+  --noir-panel-high: #1C1C22;
+  --noir-border: #272730;
+  --noir-text: #EAE6DF;
+  --noir-muted: #9E9B95;
+  --noir-red: #C8281E;
+  --noir-amber: #E58E26;
+
+  /* Tri-Voice Editorial Typography */
+  --font-display: 'Newsreader', 'Bodoni Moda', Georgia, serif;
+  --font-serif-luxury: 'Bodoni Moda', 'Newsreader', Georgia, serif;
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
   /* Spacing */
   --space-unit: 8px;
   --space-xl: 32px;
-  
+
   background-color: var(--surface);
   color: var(--on-surface);
   font-family: var(--font-body);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -43,125 +69,272 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: var(--surface);
+  /* Subtle archival paper grain texture via CSS radial micro-dots */
+  background-image: radial-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 0);
+  background-size: 24px 24px;
   color: var(--on-surface);
-  cursor: none; /* Awwwards custom cursor override */
+  cursor: none;
 }
 
-a, button, input, [role="button"] {
+a, button, input, select, textarea, [role="button"] {
   cursor: none !important;
 }
-
 
 #root {
   width: 100%;
 }
 
-/* Typography Scale */
+/* ── Editorial Typography Scale ─────────────────────────────────────────── */
 h1, h2, h3, .display {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--on-surface);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
 }
 
 .display-lg {
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 5.4vw, 5.1rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
   line-height: 1.02;
+}
+
+.metric-serif {
+  font-family: var(--font-serif-luxury);
+  font-size: clamp(3rem, 5vw, 4.75rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--on-surface-variant);
   font-weight: 600;
 }
 
-/* Primitive Components */
+/* Editorial Drop Cap */
+.editorial-dropcap::first-letter {
+  float: left;
+  font-family: var(--font-serif-luxury);
+  font-size: 4.1rem;
+  line-height: 0.82;
+  padding-right: 0.75rem;
+  padding-top: 0.15rem;
+  color: var(--accent-vermilion);
+  font-weight: 700;
+}
+
+/* ── Swiss Broadsheet Structural Containers ─────────────────────────────── */
+.broadsheet-frame {
+  max-width: 1400px;
+  margin: 0 auto;
+  border-left: 1px solid var(--grid-rule);
+  border-right: 1px solid var(--grid-rule);
+  background: rgba(244, 241, 234, 0.86);
+  position: relative;
+  z-index: 10;
+}
+
+.double-rule-bottom {
+  border-bottom: 3px solid var(--on-surface);
+  position: relative;
+}
+.double-rule-bottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--on-surface);
+}
+
+.double-rule-top {
+  border-top: 3px solid var(--on-surface);
+  position: relative;
+}
+.double-rule-top::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 1px;
+  background: var(--on-surface);
+}
+
+/* ── Editorial Cards & Tear-Sheets (Orthogonal 0px Radius) ──────────────── */
 .glass-card {
-  background: var(--glass-fill);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
+  background: var(--surface-paper-bright);
+  border: 1px solid var(--grid-rule);
   padding: var(--space-xl);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  border-radius: 0px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .glass-card:hover {
-  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.13);
-  border-color: rgba(17, 17, 17, 0.1);
+  border-color: var(--on-surface);
+  box-shadow: 4px 4px 0px var(--on-surface);
+}
+
+/* Perforated Tear-Sheet Terminal */
+.tear-sheet {
+  background: var(--surface-paper-bright);
+  border: 1px solid var(--on-surface);
+  position: relative;
+  box-shadow: 6px 6px 0px rgba(17, 17, 17, 0.9);
+}
+
+.tear-sheet-perforation {
+  border-bottom: 2px dashed rgba(17, 17, 17, 0.35);
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-container-low);
+  color: var(--on-surface-variant);
 }
 
 /* 3D Container Utility */
 .perspective-container {
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
-/* Interactive Elements */
+/* ── Mechanical Stamp Buttons ───────────────────────────────────────────── */
 .btn-primary {
   background-color: var(--on-surface);
   color: var(--surface);
-  border: none;
-  padding: 1rem 2rem;
-  font-family: var(--font-display);
-  font-weight: 700;
+  border: 1px solid var(--on-surface);
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0px;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-warm);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(255, 127, 80, 0.3);
+  background-color: var(--accent-vermilion);
+  border-color: var(--accent-vermilion);
+  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--on-surface);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--on-surface-variant);
+  border: 1px solid var(--on-surface);
   color: var(--on-surface);
-  padding: 1rem 2rem;
-  font-family: var(--font-display);
-  font-weight: 700;
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.15s ease;
 }
 
 .btn-outline:hover {
-  border-color: var(--on-surface);
-  background-color: rgba(17, 17, 17, 0.05);
+  background-color: var(--on-surface);
+  color: var(--surface);
 }
 
-/* AI Console Styling (Light Theme) */
-.ai-console {
-  background-color: #ffffff;
+/* Vermilion Stamp Badge */
+.stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-vermilion);
+  color: #ffffff;
   font-family: var(--font-mono);
-  padding: 1.5rem;
-  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+}
+
+.stamp-badge-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--on-surface);
+  background: var(--surface-container-low);
   color: var(--on-surface);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+}
+
+/* ── Running Ticker Tape ────────────────────────────────────────────────── */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--on-surface);
+  color: var(--surface);
+  border-top: 1px solid var(--on-surface);
+  border-bottom: 1px solid var(--on-surface);
+  padding: 0.55rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 42s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── AI Console Styling ─────────────────────────────────────────────────── */
+.ai-console {
+  background-color: #111113;
+  font-family: var(--font-mono);
+  padding: 1.75rem;
+  border-radius: 0px;
+  color: #EAE6DF;
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+  border: 1px solid #272730;
   cursor: default !important;
 }
 
-.ai-console input, 
+.ai-console input,
 .ai-console textarea {
   cursor: text !important;
 }
 
-.ai-console button, 
+.ai-console button,
 .ai-console a {
   cursor: pointer !important;
 }
@@ -170,39 +343,28 @@ h1, h2, h3, .display {
   cursor: text !important;
 }
 
-/* Hide Dual-Mode specific stuff globally if lingering */
-[data-mode] {
-  /* No longer strictly enforcing dark mode variables here */
-}
-
-/* ── Anchor scroll offset (clears the fixed header) ───────────────── */
+/* ── Anchor scroll offset ───────────────────────────────────────────────── */
+#cover,
+#sugoi-case-study,
 #intelligence,
+#system-architecture,
 #story,
 #pillars,
+#case-studies,
 #contact {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 90px;
 }
 
-/* ── Site header / nav ────────────────────────────────────────────── */
-.site-header {
-  transition: padding 0.3s ease, background 0.3s ease;
-}
-
-.site-brand {
-  white-space: nowrap;
-}
-
-/* ── Focus visibility (keyboard accessibility) ────────────────────── */
+/* ── Focus visibility (keyboard accessibility) ──────────────────────────── */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 [role="button"]:focus-visible {
-  outline: 2px solid var(--accent-warm);
+  outline: 2px solid var(--accent-vermilion);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
-/* ── Accessibility utilities ──────────────────────────────────────── */
+/* ── Accessibility utilities ────────────────────────────────────────────── */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -226,7 +388,6 @@ input:focus-visible,
   font-family: var(--font-mono);
   font-size: 0.8rem;
   text-decoration: none;
-  border-radius: 6px;
   transition: top 0.2s ease;
 }
 
@@ -234,27 +395,35 @@ input:focus-visible,
   top: 1rem;
 }
 
-/* ── Responsive: tablet & mobile ──────────────────────────────────── */
+/* ── Responsive Breakpoints ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .editorial-cover-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sugoi-main-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sugoi-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 768px) {
-  .site-header {
-    padding: 1rem 1.25rem !important;
-  }
   .display-lg {
-    line-height: 1.05;
+    line-height: 1.06;
+  }
+  .masthead-meta-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .masthead-title-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem !important;
   }
 }
 
-/* Collapse the nav only on phones; tablets keep it */
-@media (max-width: 600px) {
-  .site-brand {
-    font-size: 1rem !important;
-  }
-  .site-nav {
-    display: none !important;
-  }
-}
-
-/* Stack the console input + button on narrow screens */
 @media (max-width: 560px) {
   .console-input-row {
     flex-direction: column;
@@ -264,7 +433,7 @@ input:focus-visible,
   }
 }
 
-/* ── Touch devices: restore the native cursor (no custom cursor) ──── */
+/* ── Touch devices: restore native cursor ───────────────────────────────── */
 @media (hover: none), (pointer: coarse) {
   body,
   a,
@@ -279,7 +448,7 @@ input:focus-visible,
   }
 }
 
-/* ── Respect reduced-motion preferences ───────────────────────────── */
+/* ── Respect reduced-motion preferences ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

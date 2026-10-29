@@ -1,12 +1,10 @@
 import React, { Suspense, useEffect } from 'react';
 import Lenis from 'lenis';
+import EditorialMasthead from './components/EditorialMasthead';
 import Hero from './components/Hero';
-import AIConsole from './components/AIConsole';
-import PortfolioGallery from './components/PortfolioGallery';
-import AlignmentPhilosophy from './components/AlignmentPhilosophy';
-import ToolEcosystem from './components/ToolEcosystem';
-import SystemDiagram from './components/SystemDiagram';
 import CaseStudies from './components/CaseStudies';
+import SugoiCaseStudySpread from './components/SugoiCaseStudySpread';
+import AIConsole from './components/AIConsole';
 import ThreeBackground from './components/ThreeBackground';
 import CustomCursor from './components/CustomCursor';
 
@@ -38,93 +36,223 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container" style={{ position: 'relative', overflowX: 'hidden' }}>
-      <a href="#main-content" className="skip-link">Skip to content</a>
+    <div className="app-container" style={{ position: 'relative', overflowX: 'hidden', background: 'var(--surface)' }}>
+      <a href="#main-content" className="skip-link">Skip to editorial content</a>
       <CustomCursor />
       
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
       
-      {/* Floating Header */}
-      <header
-        className="site-header"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          padding: '1.5rem 2rem',
-          zIndex: 100,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          background: 'rgba(244, 244, 240, 0.72)',
-          borderBottom: '1px solid var(--glass-border)'
-        }}
-      >
-        <div className="site-brand" style={{ fontWeight: 900, fontSize: '1.25rem', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em', color: 'var(--on-surface)' }}>
-          VIVEK PUNJABI <span aria-hidden="true" style={{ color: 'var(--accent-warm)', marginLeft: '0.5rem' }}>//</span>
-        </div>
+      {/* Newspaper Masthead & Sticky Folio Nav */}
+      <EditorialMasthead />
 
-        <nav className="site-nav" aria-label="Primary" style={{ display: 'flex', gap: '2rem' }}>
-          <a href="#intelligence" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Console</a>
-          <a href="#story" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Story & Builds</a>
-          <a href="#pillars" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Pillars</a>
-          <a href="#contact" className="label" style={{ textDecoration: 'none', fontSize: '0.75rem' }}>Connect</a>
-        </nav>
-      </header>
-
-      <main id="main-content" style={{ paddingTop: '80px' }}>
+      <main id="main-content">
+        {/* Cover Broadsheet: The Learning Velocity Thesis & Interactive Deconstruction Matrix */}
         <Hero />
 
-        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
-          <SystemDiagram />
-        </div>
-
-        <div id="intelligence" style={{ position: 'relative', marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
-          <AIConsole />
-        </div>
-
-        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
-          <PortfolioGallery />
-        </div>
-
-        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
-          <AlignmentPhilosophy />
-        </div>
-
-        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
-          <ToolEcosystem />
-        </div>
-
-        <div style={{ marginTop: 'clamp(2rem, 6vh, 5rem)' }}>
+        {/* Section 02: Historical Case Study Monographs (EdTech +41% FFR, CXO Discovery, AI Health, PMM) */}
+        <div id="case-studies">
           <CaseStudies />
         </div>
 
-        <section id="contact" style={{ padding: 'clamp(5rem, 12vh, 9rem) 2rem 8rem', background: 'var(--surface-container-low)', textAlign: 'center', position: 'relative', zIndex: 10, borderTop: '1px solid var(--glass-border)' }}>
-          <div className="label" style={{ color: 'var(--accent-warm)' }}>Connect</div>
-          <h2 style={{ fontSize: 'clamp(2.25rem, 6vw, 4rem)', margin: '2rem 0', fontFamily: 'var(--font-display)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.05 }}>
-            Open to <span style={{ color: 'var(--accent-warm)' }}>New Opportunities.</span>
-          </h2>
-          <p style={{ color: 'var(--on-surface-variant)', fontSize: '1.25rem', marginBottom: '3rem' }}>
-            I'm currently looking for my next Product Marketing role — somewhere I can bring this same builder mindset to positioning, conversion, and GTM systems.<br/>If that sounds like a fit, let's connect.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <button className="btn-primary" onClick={() => window.location.href = 'mailto:punjabivivek1993@gmail.com'}>
-              Get In Touch
-            </button>
-            <button className="btn-outline" onClick={() => window.open('https://linkedin.com/in/vivekpunjabi', '_blank')}>
-              LinkedIn Profile
-            </button>
+        {/* Section 03: Flagship Centerfold — Sugoi Culture (D2C Apparel, 300-DPI MCP & Telemetry Surgery) */}
+        <div id="sugoi-case-study">
+          <SugoiCaseStudySpread />
+        </div>
+
+        {/* Section 04: Live AI GTM Terminal & Published Open-Source Instruments */}
+        <div id="intelligence">
+          <AIConsole />
+        </div>
+
+        {/* Section 05: Editorial Colophon / Back Cover Dispatch Desk */}
+        <section
+          id="contact"
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            borderTop: '3px solid var(--on-surface)',
+            borderLeft: '1px solid var(--grid-rule)',
+            borderRight: '1px solid var(--grid-rule)',
+            borderBottom: '3px solid var(--on-surface)',
+            background: 'var(--surface-container-low)',
+          }}
+        >
+          {/* Colophon Bar */}
+          <div
+            style={{
+              padding: '0.65rem 2rem',
+              borderBottom: '1px solid var(--grid-rule)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.68rem',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--on-surface-variant)',
+            }}
+          >
+            <span>SECTION 05 // BACK COVER COLOPHON</span>
+            <span>STATUS: OPEN TO PRODUCT MARKETING &amp; GTM ROLES</span>
+            <span>TRANSMISSION: READY</span>
+          </div>
+
+          <div
+            style={{
+              padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '3rem',
+              alignItems: 'center',
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent-vermilion)',
+                  marginBottom: '1rem',
+                  fontWeight: 700,
+                }}
+              >
+                // COLOPHON &amp; DIRECT DISPATCH
+              </div>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.05,
+                  margin: '0 0 1.5rem',
+                  color: 'var(--on-surface)',
+                }}
+              >
+                Let&apos;s Build the Next <span style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--accent-vermilion)' }}>Growth Monolith.</span>
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.2rem',
+                  lineHeight: 1.6,
+                  color: 'var(--on-surface)',
+                  maxWidth: '560px',
+                  margin: 0,
+                }}
+              >
+                I bring an engineer-grade builder mindset to Product Marketing — bridging DOM scrapers, 300-DPI MCP asset pipelines, qualitative CRO heatmaps, and high-converting positioning copy.
+              </p>
+            </div>
+
+            <div
+              style={{
+                border: '1px solid var(--grid-rule)',
+                background: 'var(--surface-paper-bright)',
+                padding: '2.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  borderBottom: '1px solid var(--grid-rule)',
+                  paddingBottom: '0.75rem',
+                  color: 'var(--on-surface-variant)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <span>DIRECT DISPATCH DESK</span>
+                <span>MUMBAI / REMOTE</span>
+              </div>
+
+              <p
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.95rem',
+                  lineHeight: 1.6,
+                  color: 'var(--on-surface)',
+                  margin: 0,
+                }}
+              >
+                Available for Lead / Senior Product Marketing roles, GTM Architecture contracts, and flagship D2C launch consultancies.
+              </p>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                <a
+                  href="mailto:punjabivivek1993@gmail.com"
+                  className="btn-primary"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.78rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  Initiate Correspondence →
+                </a>
+                <a
+                  href="https://linkedin.com/in/vivekpunjabi"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-outline"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.78rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  LinkedIn Dossier ↗
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer style={{ padding: '4rem 2rem', textAlign: 'center', opacity: 0.7, position: 'relative', zIndex: 10, background: 'var(--surface)' }}>
-        <div className="label" style={{ textTransform: 'none' }}>© 2026 Vivek Punjabi — PMM with a Builder Mindset</div>
+      {/* Archival Footnote Footer */}
+      <footer
+        style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          padding: '2rem',
+          borderLeft: '1px solid var(--grid-rule)',
+          borderRight: '1px solid var(--grid-rule)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.68rem',
+          letterSpacing: '0.09em',
+          textTransform: 'uppercase',
+          color: 'var(--on-surface-variant)',
+        }}
+      >
+        <div>© 2026 VIVEK PUNJABI — EDITORIAL BROADSHEET EDITION</div>
+        <div>TYPESET IN BODONI MODA, NEWSREADER &amp; JETBRAINS MONO</div>
       </footer>
     </div>
   );

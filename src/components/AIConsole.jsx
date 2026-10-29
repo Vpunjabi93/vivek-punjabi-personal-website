@@ -1,25 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal, ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, Terminal, Code2, Layers, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import Interactive3DCard from './Interactive3DCard';
 import { generateGTMAudit } from '../utils/openRouter';
-
-const EtchingFilter = () => (
-  <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
-    <defs>
-      <filter id="sun-dry-etching" x="-20%" y="-20%" width="140%" height="140%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-        <feGaussianBlur in="displaced" stdDeviation="0.5" result="blurred" />
-        <feMerge>
-          <feMergeNode in="blurred" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-    </defs>
-  </svg>
-);
 
 const AIConsole = () => {
   const [url, setUrl] = useState('');
@@ -33,21 +17,20 @@ const AIConsole = () => {
 
   const simulateLogs = () => {
     const sequence = [
-      "Executing Jina Proxy & extracting DOM text...",
-      "[Skill: product-marketing] Building foundational context & TG...",
-      "[Skill: competitor-profiling] Identifying direct market rivals...",
-      "[Skill: competitors] Analyzing USP vs alternatives...",
-      "[Skill: copywriting] Generating conversion-optimized angles...",
-      "Synthesizing 4-step GTM pipeline..."
+      "Establishing headless socket to target DOM...",
+      "[Skill: product-marketing] Extracting value proposition & ICP tags...",
+      "[Skill: competitor-profiling] Cross-referencing category rivals...",
+      "[Skill: cro] Scanning above-the-fold CTA friction & hero clarity...",
+      "[Skill: copywriting] Generating conversion-grade counter-narrative...",
+      "Synthesizing 4-step GTM teardown..."
     ];
 
     const thoughts = [
-      "Parsing semantic tree...",
-      "Cross-referencing market baselines...",
-      "Isolating conversion bottlenecks...",
-      "Weighting brand tone...",
-      "Rejecting generic hooks...",
-      "Applying psychological triggers...",
+      "Parsing semantic DOM nodes...",
+      "Analyzing headline-to-proof velocity...",
+      "Isolating qualitative conversion friction...",
+      "Synthesizing counter-positioning angles...",
+      "Weighting buyer psychology...",
       "Formatting final markdown payload..."
     ];
     
@@ -63,7 +46,6 @@ const AIConsole = () => {
         } else {
           const randomThought = thoughts[Math.floor(Math.random() * thoughts.length)];
           const newLogs = [...prev, `~ [Thinking] ${randomThought}`];
-          // Cap the log array length so it doesn't scroll infinitely
           return newLogs.length > 12 ? newLogs.slice(1) : newLogs;
         }
       });
@@ -96,162 +78,501 @@ const AIConsole = () => {
     }
   }, [logs, status]);
 
-
-
   return (
-    <section style={{ padding: '6rem 2rem', maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-      <EtchingFilter />
-      
-      <div style={{ marginBottom: '4rem', maxWidth: '600px' }}>
-        <div className="label" style={{ marginBottom: '1rem', color: 'var(--accent-warm)' }}>
-          // LIVE DEMO
-        </div>
-        <h2 className="display" style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>
-          Drop in a URL. Watch the audit run.
-        </h2>
-        <p style={{ color: 'var(--on-surface-variant)', fontSize: '1.125rem', lineHeight: 1.6 }}>
-          This isn't a mockup — it's a working pipeline I built myself. Drop in any company's homepage and watch it crawl the content, profile the audience, and generate positioning angles in real time. It's the same kind of system I'd bring to a GTM team.
-        </p>
+    <section
+      id="intelligence"
+      style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        borderLeft: '1px solid var(--grid-rule)',
+        borderRight: '1px solid var(--grid-rule)',
+        background: 'var(--surface)',
+        position: 'relative',
+        zIndex: 10,
+      }}
+    >
+      {/* Editorial Header Row */}
+      <div
+        style={{
+          padding: '0.65rem 2rem',
+          borderBottom: '1px solid var(--grid-rule)',
+          borderTop: '3px solid var(--on-surface)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.68rem',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          color: 'var(--on-surface-variant)',
+          background: 'var(--surface-container-low)',
+        }}
+      >
+        <span>SECTION 04 // LIVE COMPUTATIONAL TELEMETRY</span>
+        <span>ENGINE: 550B PARAMETER LLM + JINA DOM SCRAPER</span>
+        <span>STATUS: LIVE &amp; ARMED</span>
       </div>
-      
-      <Interactive3DCard isLocked={isLocked}>
-        <div className="ai-console" style={{ minHeight: '340px', display: 'flex', flexDirection: 'column' }}>
-          
-          {/* Header */}
-          <div aria-hidden="true" style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', opacity: 0.8, borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
-            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-            <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#27c93f' }} />
-            <span style={{ fontSize: '0.75rem', marginLeft: 'auto', color: 'var(--on-surface-variant)' }}>pmm_engine_v3.0.1</span>
+
+      <div
+        style={{
+          padding: 'clamp(2.5rem, 5vw, 4rem) 2rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '3rem',
+          alignItems: 'start',
+          borderBottom: '1px solid var(--grid-rule)',
+        }}
+      >
+        {/* Left Column: Context & Prompt */}
+        <div>
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'var(--accent-vermilion)',
+              marginBottom: '0.75rem',
+              fontWeight: 700,
+            }}
+          >
+            // REAL-TIME AUDITING
           </div>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
+              fontWeight: 900,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.05,
+              margin: '0 0 1.25rem',
+              color: 'var(--on-surface)',
+            }}
+          >
+            Drop In Any URL. <br />
+            <span style={{ fontStyle: 'italic', fontWeight: 400 }}>Watch the GTM Audit Run.</span>
+          </h2>
+          <p
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: '1.15rem',
+              lineHeight: 1.6,
+              color: 'var(--on-surface-variant)',
+              marginBottom: '1.75rem',
+            }}
+          >
+            This isn&apos;t a static mockup — it is an active pipeline. Feed in any company domain and watch it parse the live DOM, evaluate positioning against rivals, and generate high-impact messaging angles in real time.
+          </p>
 
-          {/* Content Area */}
-          <AnimatePresence mode="wait">
-            {status === 'idle' && (
-              <motion.div 
-                key="idle"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, filter: 'url(#sun-dry-etching)', scale: 0.98 }}
-                transition={{ duration: 0.5 }}
-                style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: '1.5rem' }}
+          <div
+            style={{
+              padding: '1rem 1.25rem',
+              background: 'var(--surface-paper-bright)',
+              border: '1px solid var(--grid-rule)',
+              borderLeft: '3px solid var(--accent-vermilion)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              lineHeight: 1.5,
+              color: 'var(--on-surface)',
+            }}
+          >
+            <div style={{ fontWeight: 700, marginBottom: '0.25rem', color: 'var(--accent-vermilion)' }}>
+              NOTE ON COMPUTE:
+            </div>
+            We crawl the live HTML and route it through a 550B LLM. A comprehensive teardown takes ~60-90 seconds to synthesize.
+          </div>
+        </div>
+
+        {/* Right Column: 3D Interactive Console Slip */}
+        <div>
+          <Interactive3DCard isLocked={isLocked}>
+            <div
+              style={{
+                background: 'var(--surface-paper-bright)',
+                border: '2px solid var(--on-surface)',
+                boxShadow: '8px 8px 0px rgba(17, 17, 17, 0.1)',
+                padding: '1.75rem',
+                minHeight: '360px',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {/* Terminal Title Bar */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  borderBottom: '1px solid var(--grid-rule)',
+                  paddingBottom: '0.75rem',
+                  marginBottom: '1.5rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
               >
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--on-surface-variant)' }}>
-                  <span style={{ color: 'var(--accent-warm)' }}>$</span> pmm_engine --ready<span className="console-caret">▋</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Terminal size={14} style={{ color: 'var(--accent-vermilion)' }} />
+                  <span style={{ fontWeight: 700 }}>GTM_AUDIT_CONSOLE_v3.2</span>
                 </div>
-                <form onSubmit={handleRunAudit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <label className="label" htmlFor="gtm-url">Target System URL / Company Name</label>
-                  <div className="console-input-row" style={{ display: 'flex', gap: '1rem' }}>
-                    <input
-                      id="gtm-url"
-                      name="gtm-url"
-                      type="text"
-                      value={url}
-                      aria-label="Target system URL or company name"
-                      autoComplete="off"
-                      onFocus={() => setIsInputFocused(true)}
-                      onBlur={() => setIsInputFocused(false)}
-                      onChange={(e) => setUrl(e.target.value)}
-                      placeholder="e.g. stripe.com or Notion"
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: status === 'loading' ? '#F59E0B' : '#10B981', display: 'inline-block' }} />
+                  <span style={{ color: 'var(--on-surface-variant)' }}>
+                    {status === 'loading' ? 'PROCESSING' : 'LISTENING'}
+                  </span>
+                </div>
+              </div>
+
+              {/* Console Body */}
+              <AnimatePresence mode="wait">
+                {status === 'idle' && (
+                  <motion.div
+                    key="idle"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                  >
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--on-surface-variant)' }}>
+                      <span style={{ color: 'var(--accent-vermilion)', fontWeight: 700 }}>$</span> ready --target-url=<span className="console-caret">▋</span>
+                    </div>
+
+                    <form onSubmit={handleRunAudit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                      <label
+                        htmlFor="gtm-url-input"
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.72rem',
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          color: 'var(--on-surface-variant)',
+                        }}
+                      >
+                        Target Domain or Brand
+                      </label>
+                      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                        <input
+                          id="gtm-url-input"
+                          type="text"
+                          value={url}
+                          onFocus={() => setIsInputFocused(true)}
+                          onBlur={() => setIsInputFocused(false)}
+                          onChange={(e) => setUrl(e.target.value)}
+                          placeholder="e.g. stripe.com or linear.app"
+                          style={{
+                            flex: 1,
+                            minWidth: '220px',
+                            padding: '0.85rem 1rem',
+                            border: '1px solid var(--grid-rule)',
+                            background: '#FFFFFF',
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.9rem',
+                            color: 'var(--on-surface)',
+                            outline: 'none',
+                          }}
+                        />
+                        <button
+                          type="submit"
+                          className="btn-primary"
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.75rem',
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          Execute Audit <ArrowRight size={14} />
+                        </button>
+                      </div>
+                    </form>
+
+                    <div
                       style={{
-                        flex: 1,
-                        minWidth: 0,
-                        padding: '1rem',
-                        background: 'rgba(17, 17, 17, 0.03)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '4px',
-                        color: 'var(--on-surface)',
+                        marginTop: 'auto',
+                        paddingTop: '1rem',
+                        borderTop: '1px dashed var(--grid-rule)',
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '1rem',
-                        outline: 'none'
-                      }}
-                    />
-                    <button type="submit" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
-                      Execute <ArrowRight size={16} />
-                    </button>
-                  </div>
-                </form>
-              </motion.div>
-            )}
-
-            {(status === 'loading' || status === 'error') && (
-              <motion.div 
-                key="loading"
-                initial={{ opacity: 0, filter: 'url(#sun-dry-etching)' }}
-                animate={{ opacity: 1, filter: 'none' }}
-                exit={{ opacity: 0 }}
-                style={{ flex: 1, fontFamily: 'var(--font-mono)', fontSize: '0.9rem', color: 'var(--on-surface-variant)' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', color: 'var(--accent-warm)' }}>
-                  <Loader2 className="animate-spin" size={20} />
-                  <span>Establishing LLM connection...</span>
-                </div>
-                
-                <div style={{ 
-                  padding: '0.75rem 1rem', 
-                  borderLeft: '2px solid var(--accent-warm)', 
-                  background: 'rgba(255, 127, 80, 0.05)', 
-                  marginBottom: '2rem',
-                  fontSize: '0.85rem',
-                  color: 'var(--on-surface)'
-                }}>
-                  <strong style={{ color: 'var(--accent-warm)' }}>HEADS UP:</strong> We actually scrape the live website and query a massive 550-Billion parameter LLM to synthesize this teardown. Real work takes compute. This will take roughly 2-3 minutes to generate.
-                </div>
-                {logs.map((log, index) => {
-                  const isThought = log.startsWith('~');
-                  return (
-                    <motion.div 
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      style={{ 
-                        marginBottom: '0.5rem',
-                        opacity: isThought ? 0.6 : 1,
-                        color: isThought ? 'var(--on-surface-variant)' : 'inherit',
-                        fontStyle: isThought ? 'italic' : 'normal'
+                        fontSize: '0.7rem',
+                        color: 'var(--on-surface-variant)',
+                        display: 'flex',
+                        justifyContent: 'space-between',
                       }}
                     >
-                      {log}
-                    </motion.div>
-                  );
-                })}
-                <div ref={logsEndRef} />
-              </motion.div>
-            )}
+                      <span>PRE-LOADED PROBES: LINEAR · STRIPE · NOTION</span>
+                      <span>UTF-8 // JSON-LD READY</span>
+                    </div>
+                  </motion.div>
+                )}
 
-            {status === 'complete' && (
-              <motion.div 
-                key="complete"
-                initial={{ opacity: 0, filter: 'url(#sun-dry-etching)', scale: 0.95 }}
-                animate={{ opacity: 1, filter: 'none', scale: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                ref={resultContainerRef}
-                style={{ 
-                  flex: 1, 
-                  color: 'var(--on-surface)', 
-                  paddingRight: '1rem',
-                  lineHeight: 1.8
-                }}
-                className="markdown-etching"
-              >
-                <div className="label" style={{ color: 'var(--accent-warm)', marginBottom: '1.5rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem' }}>
-                  // GTM DISSECTION: {url}
-                </div>
-                <ReactMarkdown>{result}</ReactMarkdown>
-                
-                <button 
-                  onClick={() => { setStatus('idle'); setUrl(''); }}
-                  className="btn-outline"
-                  style={{ marginTop: '2rem', fontSize: '0.875rem', padding: '0.5rem 1rem' }}
-                >
-                  Run Another
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {(status === 'loading' || status === 'error') && (
+                  <motion.div
+                    key="loading"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    style={{ flex: 1, fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--on-surface)' }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        marginBottom: '1rem',
+                        color: 'var(--accent-vermilion)',
+                        fontWeight: 700,
+                      }}
+                    >
+                      <Loader2 className="animate-spin" size={16} />
+                      <span>DISSECTING DOM &amp; QUERYING LLM SYNTHESIS...</span>
+                    </div>
+
+                    <div
+                      style={{
+                        background: '#111111',
+                        color: '#34D399',
+                        padding: '1rem',
+                        border: '1px solid #333333',
+                        minHeight: '180px',
+                        maxHeight: '260px',
+                        overflowY: 'auto',
+                        fontSize: '0.75rem',
+                        lineHeight: 1.6,
+                        marginBottom: '1rem',
+                      }}
+                    >
+                      {logs.map((log, index) => {
+                        const isThought = log.startsWith('~');
+                        return (
+                          <div
+                            key={index}
+                            style={{
+                              opacity: isThought ? 0.7 : 1,
+                              color: isThought ? '#9CA3AF' : '#34D399',
+                              fontStyle: isThought ? 'italic' : 'normal',
+                            }}
+                          >
+                            {log}
+                          </div>
+                        );
+                      })}
+                      <div ref={logsEndRef} />
+                    </div>
+
+                    {status === 'error' && (
+                      <div style={{ color: '#EF4444', marginBottom: '1rem' }}>
+                        Error occurred during audit execution.
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+
+                {status === 'complete' && (
+                  <motion.div
+                    key="complete"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    ref={resultContainerRef}
+                    style={{ flex: 1, color: 'var(--on-surface)' }}
+                    className="audit-result-markdown"
+                  >
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.72rem',
+                        letterSpacing: '0.1em',
+                        color: 'var(--accent-vermilion)',
+                        marginBottom: '1rem',
+                        borderBottom: '1px solid var(--grid-rule)',
+                        paddingBottom: '0.5rem',
+                        fontWeight: 700,
+                      }}
+                    >
+                      // SYNTHESIS REPORT FOR: {url}
+                    </div>
+
+                    <div
+                      style={{
+                        maxHeight: '400px',
+                        overflowY: 'auto',
+                        paddingRight: '0.5rem',
+                        fontSize: '0.9rem',
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      <ReactMarkdown>{result}</ReactMarkdown>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setStatus('idle');
+                        setUrl('');
+                      }}
+                      className="btn-outline"
+                      style={{
+                        marginTop: '1.5rem',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.75rem',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        padding: '0.5rem 1rem',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Audit Another Target →
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </Interactive3DCard>
         </div>
-      </Interactive3DCard>
-      
+      </div>
+
+      {/* Open Source Instruments */}
+      <div
+        style={{
+          padding: '2.5rem 2rem 3.5rem',
+          borderBottom: '3px solid var(--on-surface)',
+          background: 'var(--surface-paper-bright)',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.75rem' }}>
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent-vermilion)', fontWeight: 700 }}>
+              // OPEN SOURCE INSTRUMENTS
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, margin: '0.25rem 0 0', color: 'var(--on-surface)' }}>
+              Published Tools &amp; Telemetry Repositories
+            </h3>
+          </div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--on-surface-variant)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            VERIFIED GITHUB &amp; PYPI REPOSITORIES
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+          }}
+        >
+          {/* Card 1: GA4 MCP Server */}
+          <div style={{ border: '1px solid var(--grid-rule)', padding: '1.5rem', background: 'var(--surface)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--on-surface-variant)', marginBottom: '0.75rem' }}>
+                PYPI PACKAGE // MODEL CONTEXT PROTOCOL
+              </div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 0.75rem' }}>
+                Google Analytics 4 MCP Server
+              </h4>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.88rem', lineHeight: 1.55, color: 'var(--on-surface-variant)', margin: 0 }}>
+                Engineered and published a Python Model Context Protocol server enabling LLMs to execute real-time GA4 queries, conversion tracking, and session diagnostics directly inside agent runtimes.
+              </p>
+            </div>
+            <a
+              href="https://github.com/Vpunjabi93/GA4-MCP"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                marginTop: '1.5rem',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-vermilion)',
+                textDecoration: 'none',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.3rem',
+              }}
+            >
+              View PyPI &amp; Repo ↗
+            </a>
+          </div>
+
+          {/* Card 2: Ad CTR Evaluator */}
+          <div style={{ border: '1px solid var(--grid-rule)', padding: '1.5rem', background: 'var(--surface)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--on-surface-variant)', marginBottom: '0.75rem' }}>
+                GROWTH AUTOMATION // GEMINI API
+              </div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 0.75rem' }}>
+                Google &amp; Meta Ads Scorer
+              </h4>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.88rem', lineHeight: 1.55, color: 'var(--on-surface-variant)', margin: 0 }}>
+                Automated RSA character-limit validator and scoring compiler powered by Gemini Pro API, testing advertising copy drafts against historical high-converting hooks.
+              </p>
+            </div>
+            <a
+              href="https://github.com/Vpunjabi93/ad-ctr-evaluator"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                marginTop: '1.5rem',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-vermilion)',
+                textDecoration: 'none',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.3rem',
+              }}
+            >
+              View Code &amp; Architecture ↗
+            </a>
+          </div>
+
+          {/* Card 3: Monte Carlo Simulator */}
+          <div style={{ border: '1px solid var(--grid-rule)', padding: '1.5rem', background: 'var(--surface)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--on-surface-variant)', marginBottom: '0.75rem' }}>
+                STOCHASTIC MODELING // JAVASCRIPT
+              </div>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 0.75rem' }}>
+                Monte Carlo Game Simulator
+              </h4>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.88rem', lineHeight: 1.55, color: 'var(--on-surface-variant)', margin: 0 }}>
+                Engineered a probabilistic simulation engine running 10,000+ randomized trials to calculate exact turn-by-turn draw probabilities and optimize decision trees in complex competitive systems.
+              </p>
+            </div>
+            <a
+              href="https://github.com/Vpunjabi93/tcgp-deck-builder"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                marginTop: '1.5rem',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-vermilion)',
+                textDecoration: 'none',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.3rem',
+              }}
+            >
+              Launch Simulator ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
       <style>{`
         .animate-spin {
           animation: spin 1s linear infinite;
@@ -261,30 +582,29 @@ const AIConsole = () => {
           to { transform: rotate(360deg); }
         }
         .console-caret {
-          margin-left: 2px;
-          animation: caret-blink 1.1s steps(1) infinite;
+          animation: caret-blink 1s steps(1) infinite;
         }
         @keyframes caret-blink {
           0%, 50% { opacity: 1; }
           50.01%, 100% { opacity: 0; }
         }
-        .markdown-etching h3 {
+        .audit-result-markdown h3 {
           font-family: var(--font-display);
-          font-size: 1.25rem;
-          margin-top: 1.5rem;
-          margin-bottom: 0.5rem;
+          font-size: 1.15rem;
+          margin: 1.25rem 0 0.5rem;
+          color: var(--on-surface);
         }
-        .markdown-etching p {
+        .audit-result-markdown p {
+          font-family: var(--font-sans);
           color: var(--on-surface-variant);
+          margin-bottom: 0.75rem;
+        }
+        .audit-result-markdown ul {
+          padding-left: 1.25rem;
           margin-bottom: 1rem;
         }
-        /* Hide scrollbar for cleaner look */
-        .markdown-etching::-webkit-scrollbar {
-          width: 6px;
-        }
-        .markdown-etching::-webkit-scrollbar-thumb {
-          background: var(--glass-border);
-          border-radius: 4px;
+        .audit-result-markdown li {
+          margin-bottom: 0.35rem;
         }
       `}</style>
     </section>
