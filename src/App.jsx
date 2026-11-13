@@ -2,9 +2,11 @@ import React, { Suspense, useEffect } from 'react';
 import Lenis from 'lenis';
 import EditorialMasthead from './components/EditorialMasthead';
 import Hero from './components/Hero';
+import ExperienceAndStack from './components/ExperienceAndStack';
 import CaseStudies from './components/CaseStudies';
 import SugoiCaseStudySpread from './components/SugoiCaseStudySpread';
-import AIConsole from './components/AIConsole';
+import OpenSourceTools from './components/OpenSourceTools';
+import Endorsements from './components/Endorsements';
 import ThreeBackground from './components/ThreeBackground';
 import CustomCursor from './components/CustomCursor';
 
@@ -39,34 +41,34 @@ function App() {
     <div className="app-container" style={{ position: 'relative', overflowX: 'hidden', background: 'var(--surface)' }}>
       <a href="#main-content" className="skip-link">Skip to editorial content</a>
       <CustomCursor />
-      
+
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
-      
+
       {/* Newspaper Masthead & Sticky Folio Nav */}
       <EditorialMasthead />
 
       <main id="main-content">
-        {/* Cover Broadsheet: The Learning Velocity Thesis & Interactive Deconstruction Matrix */}
+        {/* Section 01: Above-the-Fold Value Prop, Portrait, Impact Ledger & Operating Laws */}
         <Hero />
 
-        {/* Section 02: Historical Case Study Monographs (EdTech +41% FFR, CXO Discovery, AI Health, PMM) */}
-        <div id="case-studies">
-          <CaseStudies />
-        </div>
+        {/* Section 02: Career Progression (Sales -> TimesPro PMM -> Sugoi) & Scannable Tool Stack */}
+        <ExperienceAndStack />
 
-        {/* Section 03: Flagship Centerfold — Sugoi Culture (D2C Apparel, 300-DPI MCP & Telemetry Surgery) */}
-        <div id="sugoi-case-study">
-          <SugoiCaseStudySpread />
-        </div>
+        {/* Section 03: Historical Case Study Monographs with Blueprint Diagrams & Notion Dashboard */}
+        <CaseStudies />
 
-        {/* Section 04: Live AI GTM Terminal & Published Open-Source Instruments */}
-        <div id="intelligence">
-          <AIConsole />
-        </div>
+        {/* Section 04: Flagship Crucible — Sugoi Culture (GA4/Clarity Recovery, 300-DPI MCP & Margins) */}
+        <SugoiCaseStudySpread />
 
-        {/* Section 05: Editorial Colophon / Back Cover Dispatch Desk */}
+        {/* Section 05: Verified Open-Source Tools & Published Packages */}
+        <OpenSourceTools />
+
+        {/* Peer & Manager Endorsements (LinkedIn Verified Recommendations) */}
+        <Endorsements />
+
+        {/* Section 06: Editorial Colophon / Back Cover Dispatch & Resume Desk */}
         <section
           id="contact"
           style={{
@@ -96,16 +98,16 @@ function App() {
               color: 'var(--on-surface-variant)',
             }}
           >
-            <span>SECTION 05 // BACK COVER COLOPHON</span>
-            <span>STATUS: OPEN TO PRODUCT MARKETING &amp; GTM ROLES</span>
-            <span>TRANSMISSION: READY</span>
+            <span>SECTION 06 // BACK COVER COLOPHON</span>
+            <span>STATUS: OPEN TO PRODUCT MARKETING &amp; GTM LEAD ROLES</span>
+            <span>EDTECH · B2B SAAS · D2C</span>
           </div>
 
           <div
             style={{
-              padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem)',
+              padding: 'clamp(3.5rem, 8vw, 5.5rem) clamp(1.15rem, 5vw, 4rem)',
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
               gap: '3rem',
               alignItems: 'center',
             }}
@@ -127,38 +129,43 @@ function App() {
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                  fontSize: 'clamp(2.35rem, 5vw, 4rem)',
                   fontWeight: 900,
                   letterSpacing: '-0.03em',
                   lineHeight: 1.05,
-                  margin: '0 0 1.5rem',
+                  margin: '0 0 1.35rem',
                   color: 'var(--on-surface)',
                 }}
               >
-                Let&apos;s Build the Next <span style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--accent-vermilion)' }}>Growth Monolith.</span>
+                Ready to Scale Your Next{' '}
+                <span style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--accent-vermilion)' }}>
+                  GTM Engine.
+                </span>
               </h2>
               <p
                 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.2rem',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.18rem',
                   lineHeight: 1.6,
                   color: 'var(--on-surface)',
-                  maxWidth: '560px',
+                  maxWidth: '580px',
                   margin: 0,
                 }}
               >
-                I bring an engineer-grade builder mindset to Product Marketing — bridging DOM scrapers, 300-DPI MCP asset pipelines, qualitative CRO heatmaps, and high-converting positioning copy.
+                From 100K+ EdTech product launches and VWO conversion surgery to custom Python MCPs and AI quality
+                systems—I bring sales-tested empathy and technical execution into one Product Marketing seat.
               </p>
             </div>
 
             <div
               style={{
-                border: '1px solid var(--grid-rule)',
+                border: '1px solid var(--on-surface)',
                 background: 'var(--surface-paper-bright)',
-                padding: '2.5rem',
+                padding: '2.25rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.5rem',
+                gap: '1.35rem',
+                boxShadow: '6px 6px 0px rgba(17, 17, 17, 0.9)',
               }}
             >
               <div
@@ -172,40 +179,63 @@ function App() {
                   color: 'var(--on-surface-variant)',
                   display: 'flex',
                   justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
                 }}
               >
-                <span>DIRECT DISPATCH DESK</span>
-                <span>MUMBAI / REMOTE</span>
+                <span>DIRECT DISPATCH &amp; CV DESK</span>
+                <span>MUMBAI / REMOTE READY</span>
               </div>
 
               <p
                 style={{
-                  fontFamily: 'var(--font-sans)',
+                  fontFamily: 'var(--font-body)',
                   fontSize: '0.95rem',
                   lineHeight: 1.6,
                   color: 'var(--on-surface)',
                   margin: 0,
                 }}
               >
-                Available for Lead / Senior Product Marketing roles, GTM Architecture contracts, and flagship D2C launch consultancies.
+                Open to <strong>Senior / Lead Product Marketing</strong> roles (especially EdTech &amp; B2B SaaS) and
+                high-impact <strong>GTM &amp; CRO consulting</strong> engagements.
               </p>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '0.85rem', marginTop: '0.25rem' }}>
                 <a
                   href="mailto:punjabivivek1993@gmail.com"
                   className="btn-primary"
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.78rem',
-                    letterSpacing: '0.08em',
+                    fontSize: '0.74rem',
+                    letterSpacing: '0.07em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    textAlign: 'center',
                   }}
                 >
-                  Initiate Correspondence →
+                  Email Vivek →
+                </a>
+                <a
+                  href="./Vivek_Punjabi_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-outline"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.74rem',
+                    letterSpacing: '0.07em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                  }}
+                >
+                  Download Resume (PDF) ↗
                 </a>
                 <a
                   href="https://linkedin.com/in/vivekpunjabi"
@@ -214,16 +244,36 @@ function App() {
                   className="btn-outline"
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: '0.78rem',
-                    letterSpacing: '0.08em',
+                    fontSize: '0.74rem',
+                    letterSpacing: '0.07em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    textAlign: 'center',
                   }}
                 >
-                  LinkedIn Dossier ↗
+                  LinkedIn Profile ↗
+                </a>
+                <a
+                  href="https://github.com/Vpunjabi93"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-outline"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.74rem',
+                    letterSpacing: '0.07em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                  }}
+                >
+                  GitHub (@Vpunjabi93) ↗
                 </a>
               </div>
             </div>
@@ -252,7 +302,7 @@ function App() {
         }}
       >
         <div>© 2026 VIVEK PUNJABI — EDITORIAL BROADSHEET EDITION</div>
-        <div>TYPESET IN BODONI MODA, NEWSREADER &amp; JETBRAINS MONO</div>
+        <div>TYPESET IN BODONI MODA, NEWSREADER, HANKEN GROTESK &amp; JETBRAINS MONO</div>
       </footer>
     </div>
   );

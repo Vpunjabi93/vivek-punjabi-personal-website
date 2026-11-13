@@ -1,32 +1,14 @@
 import React from 'react';
 
 const TICKER_ITEMS = [
-  { label: 'BLENDED ROAS: 6.16x ▲', highlight: true },
-  { label: 'META CBO UNIT ECONOMICS: 10.3 ORDERS BREAK-EVEN', highlight: false },
-  { label: 'GA4 + CLARITY AUDIT: 541 SESSIONS CLEANED (56.7% SELF-REFERRAL PURGED)', highlight: true },
-  { label: '300-DPI MCP PIPELINE: 35 LPI HALFTONE KNOCKOUT ACTIVE', highlight: false },
-  { label: 'IIM EXECUTIVE MBA: +41% FORM FILL RATE SURGE', highlight: true },
-  { label: 'CXO N-2 AUDIENCE DISCOVERY: 5,000-LEAD PRIMARY RESEARCH', highlight: false },
-  { label: '550B LLM GTM TEARDOWN ENGINE: ONLINE', highlight: true },
+  { label: 'TIMESPRO (TIMES GROUP): 100,000+ APP INSTALLS IN 90 DAYS', highlight: true },
+  { label: 'IIM EXECUTIVE MBA: +41% FORM FILL RATE SURGE (VWO AUDIT)', highlight: false },
+  { label: 'EMERITUS (INT\'L): $500K+/QTR EXECUTIVE ED REVENUE PORTFOLIOS', highlight: true },
+  { label: 'AI QUALITY CONTROL: 50% COLLATERAL TURNAROUND REDUCTION', highlight: false },
+  { label: 'CXO PROGRAMME: 5,000-LEAD PRIMARY RESEARCH & N-2 ICP DISCOVERY', highlight: true },
+  { label: 'SUGOI CULTURE: 300-DPI MCP PIPELINE & GA4/CLARITY SURGERY (541 SESSIONS)', highlight: false },
+  { label: 'OPEN SOURCE: PYTHON GA4 MCP SERVER PUBLISHED ON PYPI', highlight: true },
 ];
-
-const BarcodeSVG = () => (
-  <svg width="118" height="34" viewBox="0 0 118 34" aria-hidden="true" style={{ display: 'block' }}>
-    {[0, 4, 7, 12, 15, 20, 22, 27, 31, 34, 39, 44, 47, 51, 56, 59, 63, 68, 72, 75, 80, 84, 88, 91, 96, 100, 103, 108, 112, 115].map((x, idx) => (
-      <rect
-        key={x}
-        x={x}
-        y="0"
-        width={idx % 3 === 0 ? '2.5' : idx % 2 === 0 ? '1.2' : '1.8'}
-        height="24"
-        fill="#111111"
-      />
-    ))}
-    <text x="59" y="32" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="6.5" fill="#3E3D3A" letterSpacing="1.2">
-      04-7712-2836-GTM
-    </text>
-  </svg>
-);
 
 const EditorialMasthead = () => {
   const scrollToSection = (id) => {
@@ -36,13 +18,13 @@ const EditorialMasthead = () => {
 
   return (
     <header style={{ position: 'relative', zIndex: 90, background: 'var(--surface)' }}>
-      {/* Top Archival Telemetry Bar */}
+      {/* Top Editorial Metadata Bar */}
       <div
         className="masthead-meta-row"
         style={{
           maxWidth: '1400px',
           margin: '0 auto',
-          padding: '0.6rem 2rem',
+          padding: '0.65rem 2rem',
           borderBottom: '1px solid var(--grid-rule)',
           borderLeft: '1px solid var(--grid-rule)',
           borderRight: '1px solid var(--grid-rule)',
@@ -59,17 +41,15 @@ const EditorialMasthead = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, color: 'var(--on-surface)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontWeight: 700, color: 'var(--on-surface)' }}>
             <span style={{ width: '7px', height: '7px', background: 'var(--accent-vermilion)', display: 'inline-block' }} />
-            BROADSHEET FOLIO NO. IV
+            VIVEK PUNJABI // SENIOR PRODUCT MARKETING SPECIALIST
           </span>
-          <span style={{ opacity: 0.4 }}>|</span>
-          <span>CIRCULATION: GLOBAL (541 VERIFIED NODES)</span>
-          <span style={{ opacity: 0.4 }}>|</span>
-          <span>COORDINATES: 19°04&apos;N 72°52&apos;E // MUMBAI HQ</span>
+          <span style={{ opacity: 0.35 }}>|</span>
+          <span>MUMBAI, INDIA // REMOTE READY</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
           <span
             style={{
               display: 'inline-flex',
@@ -83,19 +63,19 @@ const EditorialMasthead = () => {
             }}
           >
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-vermilion)' }} />
-            TELEMETRY ON
+            OPEN TO LEAD / SENIOR PMM ROLES
           </span>
-          <span>OCTOBER 2026 // ISSUE 04</span>
+          <span>EDTECH · B2B SAAS · D2C</span>
         </div>
       </div>
 
-      {/* Main Newspaper Title Block */}
+      {/* Main Masthead Title Row */}
       <div
         className="masthead-title-row"
         style={{
           maxWidth: '1400px',
           margin: '0 auto',
-          padding: '1.75rem 2rem 1.5rem',
+          padding: '1.5rem 2rem 1.35rem',
           borderBottom: '1px solid var(--grid-rule)',
           borderLeft: '1px solid var(--grid-rule)',
           borderRight: '1px solid var(--grid-rule)',
@@ -118,35 +98,117 @@ const EditorialMasthead = () => {
               marginBottom: '0.35rem',
             }}
           >
-            THE GTM SYNTHESIZER &amp; ARCHIVAL DISPATCH
+            PRODUCT MARKETING WITH A BUILDER MINDSET
           </div>
           <div
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.3rem, 5.2vw, 4.4rem)',
+              fontSize: 'clamp(2.2rem, 5vw, 4.2rem)',
               fontWeight: 500,
               letterSpacing: '-0.03em',
               lineHeight: 0.96,
               color: 'var(--on-surface)',
             }}
           >
-            VIVEK PUNJABI <span style={{ fontWeight: 300 }}>—</span> DISPATCH
+            VIVEK PUNJABI <span style={{ fontWeight: 300, fontStyle: 'italic', color: 'var(--accent-vermilion)' }}>—</span> DISPATCH
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-          <BarcodeSVG />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
+          <a
+            href="./Vivek_Punjabi_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-outline"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.73rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              padding: '0.8rem 1.25rem',
+            }}
+          >
+            Resume (PDF) ↓
+          </a>
           <button
             className="btn-primary"
             onClick={() => scrollToSection('contact')}
-            style={{ padding: '0.75rem 1.35rem', fontSize: '0.72rem' }}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.73rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              padding: '0.8rem 1.4rem',
+            }}
           >
-            ▣ INITIATE DOSSIER
+            Get In Touch →
           </button>
         </div>
       </div>
 
-      {/* Sticky Editorial Section Nav Bar */}
+      {/* Running Metric Ticker */}
+      <div
+        style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          borderLeft: '1px solid var(--grid-rule)',
+          borderRight: '1px solid var(--grid-rule)',
+          borderBottom: '1px solid var(--grid-rule)',
+          background: 'var(--surface-container-low)',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          height: '36px',
+        }}
+      >
+        <div
+          style={{
+            padding: '0 1.25rem',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            background: 'var(--on-surface)',
+            color: '#FFFFFF',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.64rem',
+            fontWeight: 800,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+            zIndex: 2,
+          }}
+        >
+          EVIDENCE //
+        </div>
+
+        <div className="ticker-wrap" aria-label="Portfolio Evidence Ticker">
+          <div className="ticker-move">
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+              <span
+                key={idx}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.69rem',
+                  letterSpacing: '0.06em',
+                  color: item.highlight ? 'var(--accent-vermilion)' : 'var(--on-surface)',
+                  fontWeight: item.highlight ? 700 : 500,
+                  marginRight: '2.25rem',
+                }}
+              >
+                <span>{item.label}</span>
+                <span style={{ color: 'var(--ink-muted)', opacity: 0.45 }}>///</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky Editorial Navigation Bar */}
       <div
         style={{
           position: 'sticky',
@@ -159,6 +221,7 @@ const EditorialMasthead = () => {
         }}
       >
         <div
+          className="sticky-nav-inner"
           style={{
             maxWidth: '1400px',
             margin: '0 auto',
@@ -174,28 +237,30 @@ const EditorialMasthead = () => {
         >
           <nav
             aria-label="Editorial Sections"
+            className="sticky-nav-links"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1.5rem',
+              gap: '1.4rem',
               flexWrap: 'wrap',
             }}
           >
             {[
-              { href: '#cover', label: '01 // THESIS' },
-              { href: '#case-studies', label: '02 // MONOGRAPHS' },
-              { href: '#sugoi-case-study', label: '03 // SUGOI CULTURE [CENTERFOLD]', isHot: true },
-              { href: '#intelligence', label: '04 // LIVE CONSOLE' },
-              { href: '#contact', label: '05 // COLOPHON' },
+              { href: '#cover', label: '01 // OVERVIEW' },
+              { href: '#experience', label: '02 // EXPERIENCE & STACK' },
+              { href: '#case-studies', label: '03 // CASE STUDIES' },
+              { href: '#sugoi-case-study', label: '04 // SUGOI [D2C LAB]', isHot: true },
+              { href: '#tools-and-code', label: '05 // CODE & ENDORSEMENTS' },
+              { href: '#contact', label: '06 // CONTACT' },
             ].map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.72rem',
+                  fontSize: '0.7rem',
                   fontWeight: item.isHot ? 700 : 600,
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.07em',
                   textTransform: 'uppercase',
                   textDecoration: 'none',
                   color: item.isHot ? 'var(--accent-vermilion)' : 'var(--on-surface)',
@@ -210,43 +275,16 @@ const EditorialMasthead = () => {
           </nav>
 
           <div
+            className="sticky-nav-subtitle"
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.68rem',
+              fontSize: '0.66rem',
               letterSpacing: '0.08em',
               color: 'var(--on-surface-variant)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
             }}
           >
-            <span>■ EDITION: 4.2.0-STABLE</span>
-            <span>·</span>
-            <span style={{ color: 'var(--accent-vermilion)', fontWeight: 700 }}>PRICE: COMPLIMENTARY INTELLIGENCE</span>
+            TIMESPRO · EX-EMERITUS · SUGOI CULTURE
           </div>
-        </div>
-      </div>
-
-      {/* Running Stock / Telemetry Ticker Tape */}
-      <div className="ticker-wrap" aria-label="Live Portfolio Telemetry Ticker">
-        <div className="ticker-track">
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
-            <span
-              key={idx}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '1.25rem',
-                paddingRight: '2.25rem',
-                whiteSpace: 'nowrap',
-                color: item.highlight ? '#FAF8F3' : '#C8C4BC',
-                fontWeight: item.highlight ? 700 : 500,
-              }}
-            >
-              <span style={{ color: 'var(--accent-vermilion)', fontSize: '0.85rem' }}>✦</span>
-              {item.label}
-            </span>
-          ))}
         </div>
       </div>
     </header>
